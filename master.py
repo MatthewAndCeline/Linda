@@ -10,8 +10,10 @@ ts = linda.TupleSpace()
 
 linda.universe._out(("TupleSpace drainage", ts))
 
+
 while True:
+
 	print("MASTER")
-	print(ts._in((str,float)))
+	print(ts._in((str, float)))
 
 exit(0)
