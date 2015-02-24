@@ -13,6 +13,7 @@ ts._out(("Niveau_CH4",0.0))
 ts._out(("Niveau_H2O",0.0))
 ts._out(("Niveau_CO",0.0))
 ts._out(("detection_H2O_haut",))
+ts._out(("detection_gaz_haut",))
 
 while True:
 	print("MASTER")

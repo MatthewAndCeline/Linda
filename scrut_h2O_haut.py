@@ -10,7 +10,7 @@ seuil = 8.0
 
 while True:
 	ts._rd(("detection_H2O_haut",))
-	valeur_H2O = ts._rd(("Niveau_H2O",float))
+	valeur_H2O = ts._rd(("Niveau_H2O",float))[1]
 	print("SCRUT_H2O_HAUT : Le Niveau H2O lu est :")
 	print(valeur_H2O)
 	if (valeur_H2O > seuil):
