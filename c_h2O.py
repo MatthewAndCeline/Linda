@@ -8,9 +8,16 @@ linda.connect()
 
 ts = linda.universe._rd(("TupleSpace drainage", linda.TupleSpace))[1]
 
+t = [0.0, 2.3, 4.7, 5.3, 7.2, 8.1, 9.6, 10.0]
+k = 0
+
 for i in range (0,10):
 	ts._in(("Niveau_H2O",float))
-	ts._out(("Niveau_H2O", 60.6))	
+	if (k == 7):
+		k = 0
+	else:
+		k += 1
+	ts._out(("Niveau_H2O",t[k]))
 	time.sleep(1)
 
 exit(0)

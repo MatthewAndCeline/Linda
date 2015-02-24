@@ -5,6 +5,7 @@ print("OK Capteur CH4")
 import linda
 import time
 linda.connect()
+
 ts = linda.universe._rd(("TupleSpace drainage", linda.TupleSpace))[1]
 
 t = [0.0, 2.3, 4.7, 5.3, 7.2, 8.1, 9.6, 10.0]
