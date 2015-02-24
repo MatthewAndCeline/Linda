@@ -12,9 +12,10 @@ linda.universe._out(("This is tuple 2", ts2))
 
 ##ts = linda.universe._rd(("My identifying string", linda.TupleSpace))[1]
 
+ts2._out(("Hello" ,2 ,3))
 ts._out((1, 2, 3))
 
 print(ts._in((1, 2, int)))
-
+print(ts2._in((1, str,str)))
 
 ##Capteur_H2O = ts._in(())
