@@ -10,4 +10,6 @@ linda.universe._out(("Mon TS Préféré", ts))
 for i in range(0,10):
 	ts._out((1, 2, i))
 
+while True:
+	print(".")
 ##Capteur_H2O = ts._in(())
