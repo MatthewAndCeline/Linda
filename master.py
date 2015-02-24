@@ -16,4 +16,8 @@ ts._out(("Niveau_CO",0.0))
 
 while True:
 	print("MASTER")
-	print(ts._rd((str, float)))
+	print(ts._rd(("Niveau_CH4", float)))
+	print(ts._rd(("Niveau_H2O", float)))
+	print(ts._rd(("Niveau_CO", float)))
+	time.sleep(1)
+
