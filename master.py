@@ -3,6 +3,7 @@
 ##Import and connect to Linda Server
 print("OK master ")
 import linda
+import time
 linda.connect()
 ##Create TupleSpace
 ts = linda.TupleSpace()
@@ -10,11 +11,7 @@ ts = linda.TupleSpace()
 linda.universe._out(("TupleSpace drainage", ts))
 
 for i in range(0,10):
-	print ("Master - ")
-	print(ts._out((str,float)))
-##for i in range(0,10):
-	##print(i)
-	##ts._out((1, 2, i))
-	
+	print("MASTER")
+	print(ts._in((str,float)))
 
-##Capteur_H2O = ts._in(())
+exit(0)
