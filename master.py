@@ -3,6 +3,7 @@
 ##Import and connect to Linda Server
 print("OK master ")
 import linda
+import time
 linda.connect()
 ##Create TupleSpace
 ts = linda.TupleSpace()
