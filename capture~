@@ -6,7 +6,7 @@ linda.connect()
 ##Create TupleSpace
 ts = linda.TupleSpace()
 ts2 = linda.TupleSpace()
-ts_
+
 
 linda.universe._out(("Mon TS Préféré", ts))
 linda.universe._out(("Second Tuple", ts2))
