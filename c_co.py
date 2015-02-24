@@ -12,6 +12,4 @@ for i in range(0,10):
 	ts._out(("Niveau_CO",12.2))
 	time.sleep(1)
 
-
-
 exit(0)
