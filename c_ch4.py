@@ -5,6 +5,8 @@ print("OK Capteur CH4")
 import linda
 import time
 linda.connect()
+
+var tab = []
 ts = linda.universe._rd(("TupleSpace drainage", linda.TupleSpace))[1]
 
 for i in range(0,10):

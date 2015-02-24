@@ -16,4 +16,4 @@ ts._out(("Niveau_CO",0.0))
 
 while True:
 	print("MASTER")
-	print(ts._in((str, float)))
+	print(ts._rd((str, float)))
