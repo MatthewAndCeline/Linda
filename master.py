@@ -10,6 +10,9 @@ ts = linda.TupleSpace()
 
 linda.universe._out(("TupleSpace drainage", ts))
 
+ts._out(("Niveau_CH4",0.0))
+ts._out(("Niveau_H2O",0.0))
+ts._out(("Niveau_CO",0.0))
 
 while True:
 	print("MASTER")
