@@ -37,7 +37,7 @@ def maj(k):
 	ts._in(("Niveau_H2O",float))
 	ts._out(("Niveau_H2O",k))
 	fenetre.after(temps,maj,k)
-maj(0.0)
+maj(7.0)
 
 # On lance la boucle d'exécution
 fenetre.mainloop()

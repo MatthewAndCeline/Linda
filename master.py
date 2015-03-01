@@ -12,7 +12,7 @@ linda.universe._out(("TupleSpace drainage", ts))
 
 #Initialisation de l'état du système
 ts._out(("Niveau_CH4",0.0))
-ts._out(("Niveau_H2O",0.0))
+ts._out(("Niveau_H2O",7.0))
 ts._out(("Niveau_CO",0.0))
 ts._out(("etat_pompe","desactivé"))
 ts._out(("etat_ventilateur","desactivé"))
@@ -23,7 +23,7 @@ ts._out(("Seuil_CH4",7.0))
 ts._out(("Seuil_CO",7.0))
 ts._out(("Seuil_H2O_haut",8.0))
 ts._out(("Seuil_H2O_bas",3.0))
-ts._out(("Temps_Rafraichissement",1000))
+ts._out(("Temps_Rafraichissement",5000))
 
 # On crée une fenêtre, racine de notre interface
 fenetre = Tk()

@@ -27,13 +27,13 @@ def maj():
 	ts._in(("H2O_bas_detecté",))
 	etat_ventilo = ts._rd(("etat_ventilateur",str))[1]
 	if (etat_ventilo == "activé"):
-		message.set("arrêt ventilo, arrêt pompe, arrêt detection_gaz_haut, demarrage detection_H2O_haut")
+		message.set("arrêt ventilo, arrêt pompe, demarrage detection_H2O_haut")
 		ts._out(("Ventilo_Arreté",))
 	else:
 		message.set("arrêt pompe, arrêt detection_gaz_haut, demarrage detection_H2O_haut")
+		ts._in(("detection_gaz_haut",))
 	ts._out(("Pompe_Arreté",))
 	ts._out(("detection_H2O_haut",))
-	ts._inp(("detection_gaz_haut",))
 	fenetre.after(temps,maj)
 maj()
 

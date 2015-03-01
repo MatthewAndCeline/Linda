@@ -30,7 +30,7 @@ def maj(k):
 	randNum = random.random()
 	if (ventilo_en_route == "desactivé"):
 		if (pompe_en_route == "desactivé"):
-			k += 0.1*randNum
+			k += 0.2*randNum
 		else:
 			k += randNum
 	else:

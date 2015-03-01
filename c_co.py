@@ -31,7 +31,7 @@ def maj(k):
 	randNum = round(randNum,2)
 	if (ventilo_en_route == "desactivé"):
 		if (pompe_en_route == "desactivé"):
-			k += 0.1*randNum
+			k += 0.7*randNum
 		else:
 			k += randNum
 	else:
