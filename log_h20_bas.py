@@ -27,8 +27,8 @@ def maj():
 	if (etat_ventilo == "activé"):
 		ts._out(("Ventilo_Arreté",))
 	ts._out(("Pompe_Arreté",))
-	ts._inp(("detection_gaz_haut",))
 	ts._out(("detection_H2O_haut",))
+	ts._inp(("detection_gaz_haut",))
 	fenetre.after(1000,maj)
 maj()
 

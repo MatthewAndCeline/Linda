@@ -11,8 +11,8 @@ linda.connect()
 ts = linda.universe._rd(("TupleSpace drainage", linda.TupleSpace))[1]
 
 #Paramétrage du système
-seuil_CH4 = 3.0
-seuil_CO = 3.0
+seuil_CH4 = 7.0
+seuil_CO = 7.0
 
 # On crée une fenêtre, racine de notre interface
 fenetre = Tk()

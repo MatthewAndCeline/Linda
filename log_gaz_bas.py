@@ -24,7 +24,10 @@ def maj():
 	print("maj Log Gaz bas")
 	ts._in(("Gaz_bas_detecté",))
 	message.set("Gaz Bas détécté, activation de la pompe")
-	ts._out(("Pompe_En_Route",))
+	etat_pompe = ts._rd(("etat_pompe",str))[1]
+	print("Log Gaz bas : la pompe est " + etat_pompe)
+	if (etat_pompe == "desactivé"):
+		ts._out(("Pompe_En_Route",))
 	#Force H2O bas détécté
 	ts._out(("detection_H2O_bas",)) 
 	fenetre.after(1000,maj)
