@@ -44,19 +44,15 @@ Label(fenetre,textvariable=etatVentilateur).pack(padx=10,pady=10)
 
 # Fonction de mise à jour à réaliser en permanence
 def maj():
-	print("maj Ventilo")
 	etat_ventilateur = ts._rd(("etat_ventilateur",str))[1]
 	etatVentilateur.set(etat_ventilateur)
 	if(etat_ventilateur == "desactivé"):
-		print("Ventilo bloqué avant activation")
 		ts._in(("Ventilo_En_Route",))
-		print("Ventilo débloqué, activation")
 		etat_ventilateur = "activé"
 		etatVentilateur.set(etat_ventilateur)
 		ts._in(("etat_ventilateur","desactivé"))
 		ts._out(("etat_ventilateur","activé"))
 	else:
-		print("Ventilo bloqué avant désactivation")
 		ts._in(("Ventilo_Arreté",))
 		etat_ventilateur = "desactivé"
 		etatVentilateur.set(etat_ventilateur)

@@ -13,16 +13,16 @@ ts = linda.universe._rd(("TupleSpace drainage", linda.TupleSpace))[1]
 # On crée une fenêtre, racine de notre interface
 fenetre = Tk()
 fenetre.title("Logique Gaz Haut")
-fenetre.geometry('200x100+500+500')
+fenetre.geometry('600x100+700+400')
 
 # Données affichées variant avec le temps
 message = StringVar()
 Label(fenetre,textvariable=message).pack(padx=10,pady=10)
 
 def maj():
-	print("maj Log Gaz Haut")
+	message.set("attente niveau haut")
 	ts._in(("Gaz_haut_detecté",))
-	message.set("Logique GAZ HAUT --> Activation Ventilo")
+	message.set("démarrage ventilo et detection_gaz_bas")
 	ts._out(("Ventilo_En_Route",))
 	ts._out(("detection_gaz_bas",))
 	fenetre.after(1000,maj)

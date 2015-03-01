@@ -11,37 +11,30 @@ linda.connect()
 ts = linda.universe._rd(("TupleSpace drainage", linda.TupleSpace))[1]
 
 #Paramétrage du système
-seuil_CH4 = 8.0
-seuil_CO = 8.0
+seuil_CH4 = 7.0
+seuil_CO = 7.0
 
 # On crée une fenêtre, racine de notre interface
 fenetre = Tk()
 fenetre.title("Logique H2O Haut")
-fenetre.geometry('200x100+0+500')
+fenetre.geometry('600x100+700+600')
 
-# Données affichées variant avec le temps
 message = StringVar()
 Label(fenetre,textvariable=message).pack(padx=10,pady=10)
 
 # Fonction de mise à jour à réaliser en permanence
 def maj():
-	print("maj Log H2O Haut")
+	message.set("attente niveau haut")
 	ts._in(("H2O_haut_detecté",))
-	print("Log H2O Haut, H2O Haut detecté")
-	#ts._rd(("Niveau_H2O",float))[1]
 	valeur_CH4 = ts._rd(("Niveau_CH4",float))[1]
 	valeur_CO = ts._rd(("Niveau_CO",float))[1]
-	#print("LOGIQUE_H2O_HAUT : Le Niveau CH4 lu est :")
-	#print(valeur_CH4)
-	#print("LOGIQUE_H2O_HAUT : Le Niveau CO lu est :")
-	#print(valeur_CO)
 	if (valeur_CH4 < seuil_CH4 and valeur_CO < seuil_CO):
-		message.set("Valeurs CO et CH4 < seuils, pompe")
+		message.set("Gaz < seuil => activation Pompe, detection_H2O_bas, detection_gaz_haut")
 		ts._out(("Pompe_En_Route",))
 		ts._out(("detection_H2O_bas",))
 		ts._out(("detection_gaz_haut",))
 	else:
-		message.set("Valeurs CO et CH4 > seuils, ventilo")
+		message.set("Gaz > seuil => activation Ventilo, detection_gaz_bas")
 		ts._out(("Ventilo_En_Route",))
 		ts._out(("detection_gaz_bas",))
 	fenetre.after(1000,maj)

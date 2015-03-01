@@ -45,7 +45,6 @@ Label(fenetre,textvariable=etatPompe).pack(padx=10,pady=10)
 
 # Fonction de mise à jour à réaliser en permanence
 def maj():
-	print("maj Pompe")
 	etat_pompe = ts._rd(("etat_pompe",str))[1]
 	etatPompe.set(etat_pompe)
 	if(etat_pompe == "desactivé"):
