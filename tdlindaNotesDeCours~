@@ -1,0 +1,98 @@
+Capteur_H2O =
+	Add(ts, <| "Niveau_H2O", string ;; !valeur_H2O, float |>) // ! = écriture // ts = Tuple Space
+	. Capteur_H2O
+
+Capteur_CH4 =
+	Add(ts, <| "Niveau_CH4", string ;; !valeur_CH4, float |>)
+	. Capteur_CH4
+
+Capteur_CO =
+	Add(ts, <| "Niveau_CO", string ;; !valeur_CO, float |>)
+	. Capteur_CO
+
+
+
+Scrutateur_H2O_Haut(seuil) =
+	Read(ts, <| "detection_H2O_Haut", string |>)
+	. Read(ts, <| "Niveau_H2O", string ;; ?valeur_H2O, float |>) // ? = lecture
+	. (
+			[ valeur_H2O > seuil ]
+				Out(ts, <| "H2O_haut_detecté", string |>)
+				. In(ts, <| "detection_H2O_Haut", string |>
+				. Scrutateur_H2O_Haut(seuil)
+			+
+			[ else ]
+				Scrutateur_H2O_Haut(seuil)
+	)
+
+Scrutateur_H2O_Bas(seuil) =
+	Read(ts, <| "detection_H2O_Bas", string |>)
+	. Read(ts, <| "Niveau_H2O", string ;; ?valeur_H2O, float |>) // ? = lecture
+	. (
+			[ valeur_H2O < seuil ]
+				Out(ts, < "H2O_Bas_detecté", string >)
+				. In(ts, <| "detection_H2O_Bas", string |>
+				. Scrutateur_H2O_Bas(seuil)
+			+
+			[ else ]
+				Scrutateur_H2O_Bas(seuil)
+	)
+
+Scrutateur_Gaz_Haut(seuil_CH4, seuil_CO) =
+	Read(ts, <| "detection_Gaz_Haut", string |>)
+	. Read(ts, <| "Niveau_CH4", string ;; ?valeur_CH4, float |>) // ? = lecture
+	. Read(ts, <| "Niveau_CO", string ;; ?valeur_CO, float |>) // ? = lecture
+	. (
+			[ valeur_CH4 > seuil_CH4 OR valeur_CO > seuil_CO ]
+				Out(ts, < "Gaz_haut_detecté", string >)
+				. In(ts, <| "detection_Gaz_Haut", string |>
+				. Scrutateur_Gaz_Haut(seuil_CH4, seuil_CO)
+			+
+			[ else ]
+				Scrutateur_Gaz_Haut(seuil_CH4, seuil_CO)
+	)
+
+Scrutateur_Gaz_Bas(seuil_CH4, seuil_CO) =
+	Read(ts, <| "detection_Gaz_Bas", string |>)
+	. Read(ts, <| "Niveau_CH4", string ;; ?valeur_CH4, float |>) // ? = lecture
+	. Read(ts, <| "Niveau_CO", string ;; ?valeur_CO, float |>) // ? = lecture
+	. (
+			[ valeur_CH4 < seuil_CH4 AND valeur_CO < seuil_CO ]
+				Out(ts, < "Gaz_bas_detecté", string >)
+				. In(ts, <| "detection_Gaz_Bas", string |>
+				. Scrutateur_Gaz_Bas(seuil_CH4, seuil_CO)
+			+
+			[ else ]
+				Scrutateur_Gaz_Bas(seuil_CH4, seuil_CO)
+	)
+
+
+
+Logique_H2O_Haut =
+	In(ts, <| "H2O_haut_detecté", string |>)
+	. Read(ts, <| "Niveau_CH4", string ;; ?valeur_CH4, float |>) // ? = lecture
+	. Read(ts, <| "Niveau_CO", string ;; ?valeur_CO, float |>) // ? = lecture
+	. (
+			[ valeur_CH4 < seuil_CH4 AND valeur_CO < seuil_CO ]
+				Out(ts, < "Pompe_En_Route", string >)
+				. Out(ts, < "detection_H2O_Bas", string >)
+				. Out(ts, < "detection_Gaz_Haut", string >)
+			[ else ]
+				Out(ts, < "Ventilo_En_Route", string >)
+				. Out(ts, < "detection_Gaz_Bas", string >)
+	)
+
+Logique_H2O_Bas =
+	In(ts, <| "H2O_bas_detecté", string |>)
+	. Out(ts, < "Ventilo_Arreté", string >)
+	. Out(ts, < "Pompe_Arreté", string >)
+	. In(ts, < "detection_Gaz_Haut", string >)
+
+Logique _Gaz_Haut =
+	In(ts, <| "Gaz_Haut_detecté", string |>)
+	. Out(ts, < "Ventilo_En_Route", string >)
+
+Logique_Gaz_Bas =
+	In(ts, <| "Gaz_Bas_detecté", string |>)
+	. Out(ts, < "Pompe_En_Route", string |>
+				

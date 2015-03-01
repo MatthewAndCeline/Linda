@@ -14,6 +14,7 @@ while True:
 	print("SCRUT_H2O_HAUT : Le Niveau H2O lu est :")
 	print(valeur_H2O)
 	if (valeur_H2O > seuil):
+		print("H2O haut détecté")
 		ts._out(("H2O_haut_detecté",))
 		ts._in(("detection_H2O_haut",))
 		
