@@ -28,20 +28,41 @@ print("OK ventaliteur ")
 
 from Tkinter import *
 import time
+import linda
+
+linda.connect()
+ts = linda.universe._rd(("TupleSpace drainage", linda.TupleSpace))[1]
 
 # On crée une fenêtre, racine de notre interface
 fenetre = Tk()
 fenetre.title("Ventilateur")
-fenetre.geometry('150x50+200+0')
+fenetre.geometry('200x50+250+0')
 
 # Données affichées variant avec le temps
-enroute = StringVar()
-Label(fenetre,textvariable=enroute).pack(padx=10,pady=10)
+etatVentilateur = StringVar()
+Label(fenetre,textvariable=etatVentilateur).pack(padx=10,pady=10)
 
 # Fonction de mise à jour à réaliser en permanence
 def maj():
-    enroute.set("Je suis éteint")
-    fenetre.after(1000,maj)
+	print("maj Ventilo")
+	etat_ventilateur = ts._rd(("etat_ventilateur",str))[1]
+	etatVentilateur.set(etat_ventilateur)
+	if(etat_ventilateur == "desactivé"):
+		print("Ventilo bloqué avant activation")
+		ts._in(("Ventilo_En_Route",))
+		print("Ventilo débloqué, activation")
+		etat_ventilateur = "activé"
+		etatVentilateur.set(etat_ventilateur)
+		ts._in(("etat_ventilateur","desactivé"))
+		ts._out(("etat_ventilateur","activé"))
+	else:
+		print("Ventilo bloqué avant désactivation")
+		ts._in(("Ventilo_Arreté",))
+		etat_ventilateur = "desactivé"
+		etatVentilateur.set(etat_ventilateur)
+		ts._in(("etat_ventilateur","activé"))
+		ts._out(("etat_ventilateur","desactivé"))
+	fenetre.after(1000,maj)
 maj()
 
 # On lance la boucle d'exécution

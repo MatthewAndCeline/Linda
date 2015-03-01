@@ -16,7 +16,7 @@ seuil = 8.0
 # On crée une fenêtre, racine de notre interface
 fenetre = Tk()
 fenetre.title("Scrutateur H2O Haut")
-fenetre.geometry('150x100+0+200')
+fenetre.geometry('200x100+0+200')
 
 # Données affichées variant avec le temps
 jedetecte = StringVar()
@@ -38,7 +38,6 @@ def maj():
 		print("H2O haut détecté")
 		ts._out(("H2O_haut_detecté",))
 		ts._in(("detection_H2O_haut",))
-		ts._out(("detection_H2O_bas",))
 	fenetre.after(1000,maj)
 
 maj()

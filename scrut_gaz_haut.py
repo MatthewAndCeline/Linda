@@ -17,7 +17,7 @@ seuil_CO = 7.0
 # On crée une fenêtre, racine de notre interface
 fenetre = Tk()
 fenetre.title("Scrutateur Gaz Haut")
-fenetre.geometry('150x100+400+200')
+fenetre.geometry('200x200+500+200')
 
 # Données affichées variant avec le temps
 jedetecte = StringVar()
@@ -42,7 +42,6 @@ def maj():
 	if (valeur_CH4 > seuil_CH4 or valeur_CO > seuil_CO):
 		ts._out(("Gaz_haut_detecté",))
 		ts._in(("detection_gaz_haut",))
-		ts._out(("detection_gaz_bas",))
 	fenetre.after(1000,maj)
 
 maj()
