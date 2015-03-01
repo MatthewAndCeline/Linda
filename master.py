@@ -18,6 +18,13 @@ ts._out(("etat_pompe","desactivé"))
 ts._out(("etat_ventilateur","desactivé"))
 ts._out(("detection_H2O_haut",))
 
+#Configuration du système
+ts._out(("Seuil_CH4",7.0))
+ts._out(("Seuil_CO",7.0))
+ts._out(("Seuil_H2O_haut",8.0))
+ts._out(("Seuil_H2O_bas",3.0))
+ts._out(("Temps_Rafraichissement",1000))
+
 # On crée une fenêtre, racine de notre interface
 fenetre = Tk()
 fenetre.title("Master")

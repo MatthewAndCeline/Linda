@@ -10,6 +10,9 @@ import time
 linda.connect()
 ts = linda.universe._rd(("TupleSpace drainage", linda.TupleSpace))[1]
 
+#Configuration
+temps = ts._rd(("Temps_Rafraichissement",int))[1]
+
 # On crée une fenêtre, racine de notre interface
 fenetre = Tk()
 fenetre.title("Logique Gaz Bas")
@@ -29,7 +32,7 @@ def maj():
 	else:
 		message.set("demarrage detection_H2O_bas")
 	ts._out(("detection_H2O_bas",)) 
-	fenetre.after(1000,maj)
+	fenetre.after(temps,maj)
 	
 maj()
 

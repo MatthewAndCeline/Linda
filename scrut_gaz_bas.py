@@ -11,8 +11,9 @@ linda.connect()
 ts = linda.universe._rd(("TupleSpace drainage", linda.TupleSpace))[1]
 
 #Paramétrage du système
-seuil_CH4 = 7.0
-seuil_CO = 7.0
+temps = ts._rd(("Temps_Rafraichissement",int))[1]
+seuil_CH4 = ts._rd(("Seuil_CH4",float))[1]
+seuil_CO = ts._rd(("Seuil_CO",float))[1]
 
 # On crée une fenêtre, racine de notre interface
 fenetre = Tk()
@@ -36,7 +37,7 @@ def maj():
 	if (valeur_CH4 < seuil_CH4 and valeur_CO < seuil_CO):
 		ts._in(("detection_gaz_bas",))
 		ts._out(("Gaz_bas_detecté",))
-	fenetre.after(1000,maj)
+	fenetre.after(temps,maj)
 
 maj()
 

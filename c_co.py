@@ -11,9 +11,8 @@ import random
 linda.connect()
 ts = linda.universe._rd(("TupleSpace drainage", linda.TupleSpace))[1]
 
-#Initialisation du système de génération de valeurs "aléatoires"
-#t = [0.0, 2.3, 4.7, 5.3, 7.2, 8.1, 9.6, 10.0]
-#k = 0
+#Paramétrage du système
+temps = ts._rd(("Temps_Rafraichissement",int))[1]
 
 # On crée une fenêtre, racine de notre interface
 fenetre = Tk()
@@ -44,7 +43,7 @@ def maj(k):
 	info.set(k)
 	ts._in(("Niveau_CO",float))
 	ts._out(("Niveau_CO",k))
-	fenetre.after(1000,maj,k)
+	fenetre.after(temps,maj,k)
 maj(0.0)
 
 # On lance la boucle d'exécution
