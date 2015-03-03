@@ -38,6 +38,9 @@ fenetre = Tk()
 fenetre.title("Ventilateur")
 fenetre.geometry('200x50+250+0')
 
+#Paramétrage du système
+temps = ts._rd(("Temps_Rafraichissement",int))[1]
+
 # Données affichées variant avec le temps
 etatVentilateur = StringVar()
 Label(fenetre,textvariable=etatVentilateur).pack(padx=10,pady=10)
@@ -58,7 +61,7 @@ def maj():
 		etatVentilateur.set(etat_ventilateur)
 		ts._in(("etat_ventilateur","activé"))
 		ts._out(("etat_ventilateur","desactivé"))
-	fenetre.after(1000,maj)
+	fenetre.after(temps,maj)
 maj()
 
 # On lance la boucle d'exécution

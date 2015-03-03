@@ -38,7 +38,7 @@ def maj():
 		message.set("Gaz > seuil => activation Ventilo, detection_gaz_bas")
 		ts._out(("Ventilo_En_Route",))
 		ts._out(("detection_gaz_bas",))
-	fenetre.after(1000,maj)
+	fenetre.after(temps,maj)
 maj()
 
 # On lance la boucle d'exécution
