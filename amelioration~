@@ -1,0 +1,9 @@
+Améliorations Linda :
+	5h-13h : équipe 1 -- 15h-23h : équipe 2
+	Détecteur de fumée => prévenir l'ingénieur par sms
+	Il y a des mineurs qui travaillent dans la mine.
+	Allumer les lumières, sauf si les gaz sont haut, sauf quand il y a personne
+	Certains seuils (plus bas) font sonner l'alarme => Ils ont du temps pour sortir, si c'est pas fait pas d'activation et prévenir l'ingénieur par sms
+	Il y a un ingénieur qui peut mettre en route / arrêter la pompe ou le ventilateur manuellement ( 10 min maxi )
+	Si les humains ne sont pas admis dans la mine, désactiver les ascenseurs descendants chargés sauf pour l'ingénieur si il reste des mineurs en bas (en dehors des heures de W et au dessus des seuils bas)
+	
