@@ -28,3 +28,7 @@ echo "Lancement du scrutateur H2O bas !"
 ./scrut_h2O_bas.py&
 echo "Lancement du scrutateur H2O haut !"
 ./scrut_h2O_haut.py&
+echo "Lancement de l'horloge !"
+./horloge.py&
+echo "Lancement de la lampe !"
+./lampe.py&
