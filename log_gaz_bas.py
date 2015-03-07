@@ -26,11 +26,8 @@ def maj():
 	message.set("En attente gaz bas")
 	ts._in(("Gaz_bas_detecté",))
 	etat_pompe = ts._rd(("etat_pompe",str))[1]
-	#if (etat_pompe == "desactivé"):
 	message.set("activation pompe & detection_H2O_bas")
 	ts._out(("Pompe_En_Route",))
-	#else:
-	#	message.set("demarrage detection_H2O_bas")
 	ts._out(("detection_H2O_bas",)) 
 	fenetre.after(temps,maj)
 	

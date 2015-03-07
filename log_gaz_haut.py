@@ -26,8 +26,7 @@ def maj():
 	message.set("attente niveau haut")
 	ts._in(("Gaz_haut_detecté",))
 	message.set("démarrage ventilo et detection_gaz_bas")
-	ts._out(("Ventilo_En_Route",))
-	#ts._out(("detection_gaz_bas",))
+	ts._out(("Ordre_Ventilateur","En_Route",))
 	fenetre.after(temps,maj)
 maj()
 

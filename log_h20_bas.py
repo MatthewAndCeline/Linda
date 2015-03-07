@@ -28,7 +28,7 @@ def maj():
 	etat_ventilo = ts._rd(("etat_ventilateur",str))[1]
 	if (etat_ventilo == "activé"):
 		message.set("arrêt ventilo, arrêt pompe, demarrage detection_H2O_haut")
-		ts._out(("Ventilo_Arreté",))
+		ts._out(("Ordre_Ventilateur","Arret"))
 	else:
 		message.set("arrêt pompe, arrêt detection_gaz_haut, demarrage detection_H2O_haut")
 		ts._in(("detection_gaz_haut",))

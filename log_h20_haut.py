@@ -36,7 +36,7 @@ def maj():
 		ts._out(("detection_gaz_haut",))
 	else:
 		message.set("Gaz > seuil => activation Ventilo, detection_gaz_bas")
-		ts._out(("Ventilo_En_Route",))
+		ts._out(("Ordre_Ventilateur","En_Route"))
 		ts._out(("detection_gaz_bas",))
 	fenetre.after(temps,maj)
 maj()
