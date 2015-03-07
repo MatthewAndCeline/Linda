@@ -12,8 +12,8 @@ ts = linda.universe._rd(("TupleSpace drainage", linda.TupleSpace))[1]
 
 #Paramétrage du système
 temps = ts._rd(("Temps_Rafraichissement",int))[1]
-seuil_CH4 = ts._rd(("Seuil_CH4",float))[1]
-seuil_CO = ts._rd(("Seuil_CO",float))[1]
+seuil_CH4 = ts._rd(("Seuil_CH4_HC",float))[1]
+seuil_CO = ts._rd(("Seuil_CO_HC",float))[1]
 
 # On crée une fenêtre, racine de notre interface
 fenetre = Tk()
