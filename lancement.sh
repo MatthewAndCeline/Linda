@@ -32,3 +32,11 @@ echo "Lancement de l'horloge !"
 ./horloge.py&
 echo "Lancement de la lampe !"
 ./lampe.py&
+echo "Lancement du scrutateur heure pleine !"
+./scrut_heure_pleine.py&
+echo "Lancement du scrutateur heure creuse !"
+./scrut_heure_creuse.py&
+echo "Lancement du logique heure pleine !"
+./log_heure_pleine.py&
+echo "Lancement du logique heure creuse !"
+./log_heure_creuse.py&

@@ -73,3 +73,28 @@ process_id=`ps aux | grep ./horloge.py | grep -v root | grep -v grep | awk '{pri
 if [ $? -eq "0" ]; then
 kill -9 $process_id
 fi
+
+process_id=`ps aux | grep ./lampe.py | grep -v root | grep -v grep | awk '{print $2}'`
+if [ $? -eq "0" ]; then
+kill -9 $process_id
+fi
+
+process_id=`ps aux | grep ./scrut_heure_pleine.py | grep -v root | grep -v grep | awk '{print $2}'`
+if [ $? -eq "0" ]; then
+kill -9 $process_id
+fi
+
+process_id=`ps aux | grep ./scrut_heure_creuse.py | grep -v root | grep -v grep | awk '{print $2}'`
+if [ $? -eq "0" ]; then
+kill -9 $process_id
+fi
+
+process_id=`ps aux | grep ./log_heure_pleine.py | grep -v root | grep -v grep | awk '{print $2}'`
+if [ $? -eq "0" ]; then
+kill -9 $process_id
+fi
+
+process_id=`ps aux | grep ./log_heure_creuse.py | grep -v root | grep -v grep | awk '{print $2}'`
+if [ $? -eq "0" ]; then
+kill -9 $process_id
+fi
