@@ -68,3 +68,8 @@ process_id=`ps aux | grep ./scrut_h2O_haut.py | grep -v root | grep -v grep | aw
 if [ $? -eq "0" ]; then
 kill -9 $process_id
 fi
+
+process_id=`ps aux | grep ./horloge.py | grep -v root | grep -v grep | awk '{print $2}'`
+if [ $? -eq "0" ]; then
+kill -9 $process_id
+fi

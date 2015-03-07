@@ -27,13 +27,13 @@ Label(fenetre,textvariable=etatVentilateur).pack(padx=10,pady=10)
 def maj():
 	etat_ventilateur = ts._rd(("etat_ventilateur",str))[1]
 	etatVentilateur.set(etat_ventilateur)
-	ordre_recu = ts._in("Ordre_Ventilateur",str)[1]
+	ordre_recu = ts._in(("Ordre_Ventilateur",str))[1]
 	if (ordre_recu == "En_Route"):
 		etat_ventilateur = "activé"
 		etatVentilateur.set(etat_ventilateur)
 		ts._in(("etat_ventilateur","desactivé"))
 		ts._out(("etat_ventilateur","activé"))
-	else if (ordre_recu == "En_Route_Manuel"):
+	elif (ordre_recu == "En_Route_Manuel"):
 		etat_force = "activé"
 		etatVentilateur.set(etat_force + " forcé")
 		ts._in("etat_ventilateur_force",str)
@@ -42,12 +42,12 @@ def maj():
 		ts._in("etat_ventilateur_force","activé")
 		ts._out("etat_ventilateur_force","none")
 		etatVentilateur.set(etat_ventilateur)	
-	else if (ordre_recu == "Arret"):
+	elif (ordre_recu == "Arret"):
 		etat_ventilateur = "desactivé"
 		etatVentilateur.set(etat_ventilateur)
 		ts._in(("etat_ventilateur","activé"))
 		ts._out(("etat_ventilateur","desactivé"))
-	else if (ordre_recu == "Arret_Manuel"):
+	elif (ordre_recu == "Arret_Manuel"):
 		etat_force = "activé"
 		etatVentilateur.set(etat_force + " forcé")
 		ts._in("etat_ventilateur_force",str)

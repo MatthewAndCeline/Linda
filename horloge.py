@@ -24,16 +24,20 @@ info = StringVar()
 Label(fenetre,textvariable=info).pack(padx=10,pady=10)
 
 # Fonction de mise à jour à réaliser en permanence
-def maj(k):
+def maj(k,m):
 	ts._in(("heure",int))
 	ts._out(("heure",k))
-	info.set(str(k) + " h 00")
-	if (k != 23):
-		k += 1
+	info.set(str(k) + " h " + str(m))
+	if (m != 50):
+		m += 10
 	else:
-		k = 0
-	fenetre.after(duree_une_heure,maj,k)
-maj(0)
+		if (k != 23):
+			k += 1
+		else:
+			k = 0
+		m = 0
+	fenetre.after(duree_une_heure / 6,maj,k,m)
+maj(0,0)
 
 # On lance la boucle d'exécution
 fenetre.mainloop()
