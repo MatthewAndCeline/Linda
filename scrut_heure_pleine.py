@@ -15,7 +15,7 @@ temps = ts._rd(("Temps_Rafraichissement",int))[1]
 
 # On crée une fenêtre, racine de notre interface
 fenetre = Tk()
-fenetre.title("Scrutateur Heure Pleine")
+fenetre.title("Scrutateur HP")
 fenetre.geometry('200x100+900+200')
 
 # Données affichées variant avec le temps
@@ -28,7 +28,7 @@ def maj():
 	valeur_heure = ts._rd(("heure",int))[1]
 	str_heure.set(valeur_heure)
 	if ((valeur_heure == 5) or (valeur_heure == 15)):
-		ts._in(("detection_heure_creuse",))
+		ts._in(("detection_heure_pleine",))
 		ts._out(("Heure_pleine_detecté",))
 	fenetre.after(temps,maj)
 

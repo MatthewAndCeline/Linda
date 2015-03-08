@@ -15,7 +15,7 @@ temps = ts._rd(("Temps_Rafraichissement",int))[1]
 
 # On crée une fenêtre, racine de notre interface
 fenetre = Tk()
-fenetre.title("Scrutateur Heure Creuse")
+fenetre.title("Scrutateur HC")
 fenetre.geometry('200x100+1050+200')
 
 # Données affichées variant avec le temps
@@ -25,7 +25,6 @@ Label(fenetre,textvariable=str_heure).pack(padx=10,pady=20)
 # Fonction de mise à jour à réaliser en permanence
 def maj():
 	ts._rd(("detection_heure_creuse",))
-	print("Je dois détecter heure creuse")
 	valeur_heure = ts._rd(("heure",int))[1]
 	str_heure.set(valeur_heure)
 	if ((valeur_heure == 13) or (valeur_heure == 23)):

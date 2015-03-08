@@ -25,7 +25,6 @@ Label(fenetre,textvariable=message).pack(padx=10,pady=10)
 def maj():
 	message.set("En attente heure pleine")
 	ts._in(("Heure_pleine_detecté",))
-	print("Logique Heure pleine détectée")
 	message.set("detection_heure_creuse")
 	ts._out(("detection_heure_creuse",)) 
 	fenetre.after(temps,maj)
