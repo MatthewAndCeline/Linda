@@ -19,48 +19,62 @@ fenetre = Tk()
 fenetre.title("Personnes")
 fenetre.geometry('500x250+0+500')
 
-# Classe Personne
+# Définition des Personnes
 class Personne:
 	def affiche(self):
 		self.message.set(self.nom + " : " + self.loc)
 
-isidor = Personne()
+class Ingenieur(Personne):
+	""
+
+class Ouvrier(Personne):
+	""
+
+isidor = Ingenieur()
 isidor.nom = "Isidor"
+isidor.equipe = 1
 isidor.loc = "dehors"
 isidor.message = StringVar()
 
-isabelle = Personne()
+isabelle = Ingenieur()
 isabelle.nom = "Isabelle"
+isabelle.equipe = 2
 isabelle.loc = "dehors"
 isabelle.message = StringVar()
 
-marcel = Personne()
+marcel = Ouvrier()
 marcel.nom = "Marcel"
+marcel.equipe = 1
 marcel.loc = "dehors"
 marcel.message = StringVar()
 
-monique = Personne()
+monique = Ouvrier()
 monique.nom = "Monique"
+monique.equipe = 1
 monique.loc = "dehors"
 monique.message = StringVar()
 
-marc = Personne()
+marc = Ouvrier()
 marc.nom = "Marc"
+marc.equipe = 1
 marc.loc = "dehors"
 marc.message = StringVar()
 
-michel = Personne()
+michel = Ouvrier()
 michel.nom = "Michel"
+michel.equipe = 2
 michel.loc = "dehors"
 michel.message = StringVar()
 
-marguerite = Personne()
+marguerite = Ouvrier()
 marguerite.nom = "Marguerite"
+marguerite.equipe = 2
 marguerite.loc = "dehors"
 marguerite.message = StringVar()
 
-mathilde = Personne()
+mathilde = Ouvrier()
 mathilde.nom = "Mathilde"
+mathilde.equipe = 2
 mathilde.loc = "dehors"
 mathilde.message = StringVar()
 
@@ -84,7 +98,29 @@ def maj():
 	michel.affiche()
 	marguerite.affiche()
 	mathilde.affiche()
+	fenetre.after(0,surveillerDebutService)
 
+def surveillerDebutService():
+	equipe = ts._in(("Equipe_Entrer",int))[1]
+	if (equipe == 1):
+		isidor.loc = "veut entrer"
+		isidor.affiche()
+		marcel.loc = "veut entrer"
+		marcel.affiche()
+		monique.loc = "veut entrer"
+		monique.affiche()
+		marc.loc = "veut entrer"
+		marc.affiche()
+	else:
+		isabelle.loc = "veut entrer"
+		isabelle.affiche()
+		michel.loc = "veut entrer"
+		michel.affiche()
+		marguerite.loc = "veut entrer"
+		marguerite.affiche()
+		mathilde.loc = "veut entrer"
+		mathilde.affiche()
+	fenetre.after(temps,surveillerDebutService)
 
 maj()
 

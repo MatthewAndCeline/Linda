@@ -33,6 +33,13 @@ def maj():
 	#Allumer les lampes
 	ts._out(("Lampe_En_Route",))
 	#
+	#Faire rentrer les travailleurs
+	heure = ts._rd(("heure",int))[1]
+	if ((heure >= 5) and (heure <= 13)):
+		ts._out(("Equipe_Entrer",1))
+	else:
+		ts._out(("Equipe_Entrer",2))
+	#
 	message.set("detection_heure_creuse")
 	ts._out(("detection_heure_creuse",)) 
 	fenetre.after(temps,maj)
