@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8-unix -*-
-print("OK Capteur CH4")
+print("OK Personnes")
 
 from Tkinter import *
 import linda
@@ -19,34 +19,72 @@ fenetre = Tk()
 fenetre.title("Personnes")
 fenetre.geometry('500x250+0+500')
 
+# Classe Personne
+class Personne:
+	def affiche(self):
+		self.message.set(self.nom + " : " + self.loc)
+
+isidor = Personne()
+isidor.nom = "Isidor"
+isidor.loc = "dehors"
+isidor.message = StringVar()
+
+isabelle = Personne()
+isabelle.nom = "Isabelle"
+isabelle.loc = "dehors"
+isabelle.message = StringVar()
+
+marcel = Personne()
+marcel.nom = "Marcel"
+marcel.loc = "dehors"
+marcel.message = StringVar()
+
+monique = Personne()
+monique.nom = "Monique"
+monique.loc = "dehors"
+monique.message = StringVar()
+
+marc = Personne()
+marc.nom = "Marc"
+marc.loc = "dehors"
+marc.message = StringVar()
+
+michel = Personne()
+michel.nom = "Michel"
+michel.loc = "dehors"
+michel.message = StringVar()
+
+marguerite = Personne()
+marguerite.nom = "Marguerite"
+marguerite.loc = "dehors"
+marguerite.message = StringVar()
+
+mathilde = Personne()
+mathilde.nom = "Mathilde"
+mathilde.loc = "dehors"
+mathilde.message = StringVar()
+
 # Données affichées variant avec le temps
-isidor = StringVar()
-Label(fenetre,textvariable=isidor).pack(padx=5,pady=5)
-isabelle = StringVar()
-Label(fenetre,textvariable=isabelle).pack(padx=5,pady=5)
-marcel = StringVar()
-Label(fenetre,textvariable=marcel).pack(padx=5,pady=5)
-monique = StringVar()
-Label(fenetre,textvariable=monique).pack(padx=5,pady=5)
-marc = StringVar()
-Label(fenetre,textvariable=marc).pack(padx=5,pady=5)
-michel = StringVar()
-Label(fenetre,textvariable=michel).pack(padx=5,pady=5)
-marguerite = StringVar()
-Label(fenetre,textvariable=marguerite).pack(padx=5,pady=5)
-mathilde = StringVar()
-Label(fenetre,textvariable=mathilde).pack(padx=5,pady=5)
+Label(fenetre,textvariable=isidor.message).pack(padx=5,pady=5)
+Label(fenetre,textvariable=isabelle.message).pack(padx=5,pady=5)
+Label(fenetre,textvariable=marcel.message).pack(padx=5,pady=5)
+Label(fenetre,textvariable=monique.message).pack(padx=5,pady=5)
+Label(fenetre,textvariable=marc.message).pack(padx=5,pady=5)
+Label(fenetre,textvariable=michel.message).pack(padx=5,pady=5)
+Label(fenetre,textvariable=marguerite.message).pack(padx=5,pady=5)
+Label(fenetre,textvariable=mathilde.message).pack(padx=5,pady=5)
 
 # Fonction de mise à jour à réaliser en permanence
 def maj():
-	isidor.set("Isidor")
-	isabelle.set("Isabelle")
-	marcel.set("Marcel")
-	monique.set("Monique")
-	marc.set("Marc")
-	michel.set("Michel")
-	marguerite.set("Marguerite")
-	mathilde.set("Mathilde")
+	isidor.affiche()
+	isabelle.affiche()
+	marcel.affiche()
+	monique.affiche()
+	marc.affiche()
+	michel.affiche()
+	marguerite.affiche()
+	mathilde.affiche()
+
 
 maj()
 
