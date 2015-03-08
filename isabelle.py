@@ -26,7 +26,8 @@ Label(fenetre,textvariable=info).pack(padx=5,pady=5)
 
 # Fonction de mise à jour à réaliser en permanence
 def maj():
-	fenetre.after(temps,maj,k)
+	info.set("Isabelle")
+	fenetre.after(temps,maj)
 
 T = threading.Thread(None,maj)
 T.start()

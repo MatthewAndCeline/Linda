@@ -39,7 +39,7 @@ def maj(k):
 	ts._out(("Niveau_H2O",k))
 	fenetre.after(temps,maj,k)
 
-T = threading.Thread(None,maj,(7.0,))
+T = threading.Thread(None,maj,None,(7.0,))
 T.start()
 
 # On lance la boucle d'exécution

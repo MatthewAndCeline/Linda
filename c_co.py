@@ -46,7 +46,7 @@ def maj(k):
 	ts._out(("Niveau_CO",k))
 	fenetre.after(temps,maj,k)
 
-T = threading.Thread(None,maj,(0.0,))
+T = threading.Thread(None,maj,None,(0.0,))
 T.start()
 
 # On lance la boucle d'exécution
