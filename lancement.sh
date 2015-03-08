@@ -44,3 +44,5 @@ echo "Lancement de l'alarme !"
 ./alarme.py&
 echo "Lancement des personnes !"
 ./personnes.py&
+echo "Lancement de l'ascenseur !"
+./ascenseur.py&

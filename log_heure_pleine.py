@@ -33,6 +33,9 @@ def maj():
 	#Allumer les lampes
 	ts._out(("Lampe_En_Route",))
 	#
+	#Autoriser l'ascenseur
+	ts._out(("Autoriser_Ascenseur",))
+	#
 	#Faire rentrer les travailleurs
 	heure = ts._rd(("heure",int))[1]
 	if ((heure >= 5) and (heure <= 13)):

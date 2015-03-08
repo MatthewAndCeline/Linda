@@ -33,6 +33,9 @@ def maj():
 	#Eteindre les lampes
 	ts._out(("Lampe_Arreté",))
 	#
+	#Couper l'ascenseur
+	ts._out(("Interdire_Ascenseur",))
+	#
 	message.set("detection_heure_pleine")
 	ts._out(("detection_heure_pleine",)) 
 	fenetre.after(temps,maj)
