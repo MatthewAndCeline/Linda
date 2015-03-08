@@ -12,7 +12,7 @@ ts = linda.universe._rd(("TupleSpace drainage", linda.TupleSpace))[1]
 
 #Paramétrage du système
 temps = ts._rd(("Temps_Rafraichissement",int))[1]
-seuil = ts._rd(("Seuil_H2O_haut_HC",float))[1]
+seuil = ts._rd(("Seuil_H2O_haut",float))[1]
 
 # On crée une fenêtre, racine de notre interface
 fenetre = Tk()
@@ -26,6 +26,7 @@ Label(fenetre,textvariable=valeur).pack(padx=10,pady=10)
 # Fonction de mise à jour à réaliser en permanence
 def maj():
 	ts._rd(("detection_H2O_haut",))
+	seuil = ts._rd(("Seuil_H2O_haut",float))[1]
 	valeur_H2O = ts._rd(("Niveau_H2O",float))[1]
 	valeur.set(valeur_H2O)
 	if (valeur_H2O > seuil):

@@ -12,8 +12,8 @@ ts = linda.universe._rd(("TupleSpace drainage", linda.TupleSpace))[1]
 
 #Paramétrage du système
 temps = ts._rd(("Temps_Rafraichissement",int))[1]
-seuil_CH4 = ts._rd(("Seuil_CH4_HC",float))[1]
-seuil_CO = ts._rd(("Seuil_CO_HC",float))[1]
+seuil_CH4 = ts._rd(("Seuil_CH4",float))[1]
+seuil_CO = ts._rd(("Seuil_CO",float))[1]
 
 # On crée une fenêtre, racine de notre interface
 fenetre = Tk()
@@ -30,6 +30,8 @@ Label(fenetre,textvariable=str_valeur_CO).pack(padx=30,pady=20)
 # Fonction de mise à jour à réaliser en permanence
 def maj():
 	ts._rd(("detection_gaz_haut",))
+	seuil_CH4 = ts._rd(("Seuil_CH4",float))[1]
+	seuil_CO = ts._rd(("Seuil_CO",float))[1]
 	valeur_CH4 = ts._rd(("Niveau_CH4",float))[1]
 	valeur_CO = ts._rd(("Niveau_CO",float))[1]
 	str_valeur_CH4.set(valeur_CH4)

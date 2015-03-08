@@ -25,6 +25,11 @@ Label(fenetre,textvariable=message).pack(padx=10,pady=10)
 def maj():
 	message.set("En attente heure creuse")
 	ts._in(("Heure_creuse_detecté",))
+	#Modifier les seuils
+	nouveau_seuil_H2O = ts._rd(("Seuil_H2O_haut_HC",float))[1]
+	ts._in(("Seuil_H2O_haut",float))
+	ts._out(("Seuil_H2O_haut",nouveau_seuil_H2O))
+	#
 	message.set("detection_heure_pleine")
 	ts._out(("detection_heure_pleine",)) 
 	fenetre.after(temps,maj)
