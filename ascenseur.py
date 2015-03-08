@@ -15,7 +15,7 @@ temps = ts._rd(("Temps_Rafraichissement",int))[1]
 # On crée une fenêtre, racine de notre interface
 fenetre = Tk()
 fenetre.title("Ascenseur")
-fenetre.geometry('200x50+900+0')
+fenetre.geometry('200x100+900+0')
 
 # Données affichées variant avec le temps
 autorisation = StringVar()
@@ -45,8 +45,44 @@ def maj():
 		autorisation.set(etat_autorisation)
 		ts._in(("autorisation_ascenseur","interdit"))
 		ts._out(("autorisation_ascenseur","autorisé"))
+		fenetre.after(temps / 60, ecouterAppel)
 	fenetre.after(temps,maj)
-maj()
+
+def ecouterAppel():
+	etat_autorisation = ts._rd(("autorisation_ascenseur",str))[1]
+	etat_action = ts._rd(("action_ascenseur",str))[1]
+	if (etat_autorisation == "autorisé"):
+		if (etat_action == "attendEnHaut"):
+			#Prendre des clients
+			nom1 = ts._in(("veut_descendre",str))[1]
+			time.sleep(temps / 240)
+			nom2 = ts._inp(("veut_descendre",str))[1]
+			nom3 = ts._inp(("veut_descendre",str))[1]
+			#Descendre
+			etat_action = "Descent"
+			ts._in(("action_ascenseur",str))
+			ts._out(("action_ascenseur",etat_action))
+			action.set(etat_action)
+			etat_occupation = nom1 + " " + nom2 + " " + nom3
+			ts._in(("occupation_ascenseur",str))
+			ts._out(("occupation_ascenseur",etat_occupation))
+			occupation.set(etat_occupation)
+			time.sleep(temps / 30)
+			#Vider
+			ts._out(("descendu",nom1))
+			ts._out(("descendu",nom2))
+			ts._out(("descendu",nom3))
+			etat_occupation = "vide"
+			ts._in(("occupation_ascenseur",str))
+			ts._out(("occupation_ascenseur",etat_occupation))
+			occupation.set(etat_occupation)
+			etat_action = "AttendEnBas"
+			ts._in(("action_ascenseur",str))
+			ts._out(("action_ascenseur",etat_action))
+			action.set(etat_action)
+			fenetre.after(temps / 60, ecouterAppel)
+
+fenetre.after(10,maj)
 
 # On lance la boucle d'exécution
 fenetre.mainloop()

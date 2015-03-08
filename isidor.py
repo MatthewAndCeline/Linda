@@ -6,6 +6,7 @@ from Tkinter import *
 import linda
 import time
 import random
+import threading
 
 #Initialisation de Linda
 linda.connect()
@@ -23,6 +24,22 @@ fenetre.geometry('500x250+0+500')
 class Personne:
 	def affiche(self):
 		self.message.set(self.nom + " : " + self.loc)
+	def demanderAscenseur(self):
+		print(self.nom + " demande ascenseur")
+		if (self.loc == "dehors"):
+			ts._out(("veut_descendre",self.nom))
+			self.loc = "veut descendre"
+			self.affiche()
+			ts._in(("descendu",self.nom))
+			self.loc = "mine"
+			self.affiche()
+		else:
+			ts._out(("veut_monter",self.nom))
+			self.loc = "veut monter"
+			self.affiche()
+			ts._in(("monté",self.nom))
+			self.loc = "dehors"
+			self.affiche()
 
 class Ingenieur(Personne):
 	""
@@ -103,26 +120,26 @@ def maj():
 def surveillerDebutService():
 	equipe = ts._in(("Equipe_Entrer",int))[1]
 	if (equipe == 1):
-		isidor.loc = "veut entrer"
-		isidor.affiche()
-		marcel.loc = "veut entrer"
-		marcel.affiche()
-		monique.loc = "veut entrer"
-		monique.affiche()
-		marc.loc = "veut entrer"
-		marc.affiche()
+		a = threading.Thread(None, isidor.demanderAscenseur)
+		a.start()
+		b = threading.Thread(None, marcel.demanderAscenseur)
+		b.start()
+		c = threading.Thread(None, monique.demanderAscenseur)
+		c.start()
+		d = threading.Thread(None, marc.demanderAscenseur)
+		d.start()
 	else:
-		isabelle.loc = "veut entrer"
-		isabelle.affiche()
-		michel.loc = "veut entrer"
-		michel.affiche()
-		marguerite.loc = "veut entrer"
-		marguerite.affiche()
-		mathilde.loc = "veut entrer"
-		mathilde.affiche()
+		a = threading.Thread(None, isabelle.demanderAscenseur)
+		a.start()
+		b = threading.Thread(None, michel.demanderAscenseur)
+		b.start()
+		c = threading.Thread(None, marguerite.demanderAscenseur)
+		c.start()
+		d = threading.Thread(None, mathilde.demanderAscenseur)
+		d.start()
 	fenetre.after(temps,surveillerDebutService)
 
-maj()
+fenetre.after(10,maj)
 
 
 # On lance la boucle d'exécution

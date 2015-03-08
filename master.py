@@ -20,7 +20,7 @@ ts._out(("etat_ventilateur","desactivé"))
 ts._out(("etat_lampe","desactivé"))
 ts._out(("etat_alarme","desactivé"))
 ts._out(("autorisation_ascenseur","interdit"))
-ts._out(("action_ascenseur","none"))
+ts._out(("action_ascenseur","attendEnHaut"))
 ts._out(("occupation_ascenseur","vide"))
 ts._out(("detection_H2O_haut",))
 ts._out(("detection_heure_pleine",))
@@ -50,7 +50,7 @@ ts._out(("Proba_Action_Manuelle",0.01))
 # On crée une fenêtre, racine de notre interface
 fenetre = Tk()
 fenetre.title("Master")
-fenetre.geometry('100x20+0+0')
+fenetre.geometry('1400x700+0+0')
 Label(fenetre,text="Système en route").pack(padx=10,pady=10)
 
 # On lance la boucle d'exécution
