@@ -44,17 +44,17 @@ if [ $? -eq "0" ]; then
 kill -9 $process_id
 fi
 
-process_id=`ps aux | grep ./log_h20_bas.py | grep -v root | grep -v grep | awk '{print $2}'`
+process_id=`ps aux | grep ./log_h2O_bas.py | grep -v root | grep -v grep | awk '{print $2}'`
 if [ $? -eq "0" ]; then
 kill -9 $process_id
 fi
 
-process_id=`ps aux | grep ./log_h20_haut.py| grep -v root | grep -v grep | awk '{print $2}'`
+process_id=`ps aux | grep ./log_h2O_haut.py| grep -v root | grep -v grep | awk '{print $2}'`
 if [ $? -eq "0" ]; then
 kill -9 $process_id
 fi
 
-process_id=`ps aux | grep ./log_h20_critique.py| grep -v root | grep -v grep | awk '{print $2}'`
+process_id=`ps aux | grep ./log_h2O_critique.py| grep -v root | grep -v grep | awk '{print $2}'`
 if [ $? -eq "0" ]; then
 kill -9 $process_id
 fi

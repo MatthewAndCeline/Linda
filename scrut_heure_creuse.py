@@ -16,7 +16,7 @@ temps = ts._rd(("Temps_Rafraichissement",int))[1]
 # On crée une fenêtre, racine de notre interface
 fenetre = Tk()
 fenetre.title("Scrutateur HC")
-fenetre.geometry('200x100+1050+200')
+fenetre.geometry('150x50+200+100')
 
 # Données affichées variant avec le temps
 str_heure = StringVar()

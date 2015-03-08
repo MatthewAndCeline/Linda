@@ -5,6 +5,7 @@ print("OK alarme ")
 from Tkinter import *
 import time
 import linda
+import threading
 
 linda.connect()
 ts = linda.universe._rd(("TupleSpace drainage", linda.TupleSpace))[1]
@@ -15,11 +16,11 @@ temps = ts._rd(("Temps_Rafraichissement",int))[1]
 # On crée une fenêtre, racine de notre interface
 fenetre = Tk()
 fenetre.title("Alarme")
-fenetre.geometry('200x50+900+0')
+fenetre.geometry('150x50+600+500')
 
 # Données affichées variant avec le temps
 etatAlarme = StringVar()
-Label(fenetre,textvariable=etatAlarme).pack(padx=10,pady=10)
+Label(fenetre,textvariable=etatAlarme).pack(padx=5,pady=5)
 
 # Fonction de mise à jour à réaliser en permanence
 def maj():
@@ -38,7 +39,9 @@ def maj():
 		ts._in(("etat_alarme","activé"))
 		ts._out(("etat_alarme","desactivé"))
 	fenetre.after(temps,maj)
-maj()
+
+T = threading.Thread(None,maj)
+T.start()
 
 # On lance la boucle d'exécution
 fenetre.mainloop()

@@ -18,10 +18,10 @@ seuil_CO = ts._rd(("Seuil_CO_HC",float))[1]
 # On crée une fenêtre, racine de notre interface
 fenetre = Tk()
 fenetre.title("Logique H2O Haut")
-fenetre.geometry('600x100+700+600')
+fenetre.geometry('150x50+800+400')
 
 message = StringVar()
-Label(fenetre,textvariable=message).pack(padx=10,pady=10)
+Label(fenetre,textvariable=message).pack(padx=5,pady=5)
 
 # Fonction de mise à jour à réaliser en permanence
 def maj():

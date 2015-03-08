@@ -6,6 +6,7 @@ from Tkinter import *
 import linda
 import time
 import random
+import threading
 
 #Initialisation de Linda
 linda.connect()
@@ -16,12 +17,12 @@ temps = ts._rd(("Temps_Rafraichissement",int))[1]
 
 # On crée une fenêtre, racine de notre interface
 fenetre = Tk()
-fenetre.title("Capteur CH4")
-fenetre.geometry('200x50+250+100')
+fenetre.title("Capt.CH4")
+fenetre.geometry('150x50+600+0')
 
 # Données affichées variant avec le temps
 info = StringVar()
-Label(fenetre,textvariable=info).pack(padx=10,pady=10)
+Label(fenetre,textvariable=info).pack(padx=5,pady=5)
 
 # Fonction de mise à jour à réaliser en permanence
 def maj(k):
@@ -43,8 +44,9 @@ def maj(k):
 	ts._in(("Niveau_CH4",float))
 	ts._out(("Niveau_CH4",k))
 	fenetre.after(temps,maj,k)
-maj(0.0)
 
+T = threading.Thread(None,maj,(0.0,))
+T.start()
 
 # On lance la boucle d'exécution
 fenetre.mainloop()

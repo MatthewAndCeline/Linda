@@ -8,6 +8,10 @@ echo "Lancement du capteur CO !"
 ./c_co.py&
 echo "Lancement du capteur H2O !"
 ./c_h2O.py&
+echo "Lancement du capteur de fumée !"
+./c_fumee.py&
+echo "Lancement du compteur de personnes !"
+./c_personnes.py&
 
 echo "Lancement de la Pompe !"
 ./pompe.py&
@@ -56,11 +60,11 @@ echo "Lancement du logique gaz haut !"
 echo "Lancement du logique gaz critique !"
 ./log_gaz_critique.py&
 echo "Lancement du logique H2O bas !"
-./log_h20_bas.py&
+./log_h2O_bas.py&
 echo "Lancement du logique H2O haut !"
-./log_h20_haut.py&
+./log_h2O_haut.py&
 echo "Lancement du logique H2O critique !"
-./log_h20_critique.py&
+./log_h2O_critique.py&
 echo "Lancement du logique fumée bas !"
 ./log_fumee_bas.py&
 echo "Lancement du logique fumée haut !"

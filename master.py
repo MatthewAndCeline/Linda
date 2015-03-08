@@ -50,8 +50,8 @@ ts._out(("Proba_Action_Manuelle",0.01))
 # On crée une fenêtre, racine de notre interface
 fenetre = Tk()
 fenetre.title("Master")
-fenetre.geometry('1400x700+0+0')
-Label(fenetre,text="Système en route").pack(padx=10,pady=10)
+fenetre.geometry('150x50+0+0')
+Label(fenetre,text="Système en route").pack(padx=5,pady=5)
 
 # On lance la boucle d'exécution
 fenetre.mainloop()

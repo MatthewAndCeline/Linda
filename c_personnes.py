@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8-unix -*-
-print("OK Scrut.Gaz.Crit")
+print("OK Capteur Personnes")
 
 from Tkinter import *
 import linda
@@ -17,8 +17,8 @@ temps = ts._rd(("Temps_Rafraichissement",int))[1]
 
 # On crée une fenêtre, racine de notre interface
 fenetre = Tk()
-fenetre.title("Scrut.Gaz.Crit")
-fenetre.geometry('150x50+600+100')
+fenetre.title("Capt.Pers")
+fenetre.geometry('150x50+1200+0')
 
 # Données affichées variant avec le temps
 info = StringVar()

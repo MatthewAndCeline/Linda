@@ -5,6 +5,7 @@ print("OK ascenseur ")
 from Tkinter import *
 import time
 import linda
+import threading
 
 linda.connect()
 ts = linda.universe._rd(("TupleSpace drainage", linda.TupleSpace))[1]
@@ -15,15 +16,15 @@ temps = ts._rd(("Temps_Rafraichissement",int))[1]
 # On crée une fenêtre, racine de notre interface
 fenetre = Tk()
 fenetre.title("Ascenseur")
-fenetre.geometry('200x100+900+0')
+fenetre.geometry('150x50+800+500')
 
 # Données affichées variant avec le temps
 autorisation = StringVar()
-Label(fenetre,textvariable=autorisation).pack(padx=10,pady=5)
+Label(fenetre,textvariable=autorisation).pack(padx=5,pady=5)
 action = StringVar()
-Label(fenetre,textvariable=action).pack(padx=10,pady=5)
+Label(fenetre,textvariable=action).pack(padx=5,pady=5)
 occupation = StringVar()
-Label(fenetre,textvariable=occupation).pack(padx=10,pady=5)
+Label(fenetre,textvariable=occupation).pack(padx=5,pady=5)
 
 # Fonction de mise à jour à réaliser en permanence
 def maj():
@@ -82,7 +83,8 @@ def ecouterAppel():
 			action.set(etat_action)
 			fenetre.after(temps / 60, ecouterAppel)
 
-fenetre.after(10,maj)
+T = threading.Thread(None,maj)
+T.start()
 
 # On lance la boucle d'exécution
 fenetre.mainloop()
