@@ -169,7 +169,6 @@ if [ $? -eq "0" ]; then
 kill -9 $process_id
 fi
 
-
 process_id=`ps aux | grep ./isidor.py | grep -v root | grep -v grep | awk '{print $2}'`
 if [ $? -eq "0" ]; then
 kill -9 $process_id
@@ -194,7 +193,7 @@ process_id=`ps aux | grep ./marguerite.py | grep -v root | grep -v grep | awk '{
 if [ $? -eq "0" ]; then
 kill -9 $process_id
 
-fiprocess_id=`ps aux | grep ./monique.py | grep -v root | grep -v grep | awk '{print $2}'`
+process_id=`ps aux | grep ./monique.py | grep -v root | grep -v grep | awk '{print $2}'`
 if [ $? -eq "0" ]; then
 kill -9 $process_id
 fi
@@ -208,3 +207,4 @@ process_id=`ps aux | grep ./mathilde.py | grep -v root | grep -v grep | awk '{pr
 if [ $? -eq "0" ]; then
 kill -9 $process_id
 fi
+
