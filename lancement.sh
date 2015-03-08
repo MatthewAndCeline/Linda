@@ -75,6 +75,7 @@ echo "Lancement du logique personnes nul !"
 echo "Lancement des personnes !"
 ./isidor.py&
 ./isabelle.py&
+./marc.py&
 ./marcel.py&
 ./michel.py&
 ./mathilde.py&
