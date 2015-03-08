@@ -30,6 +30,9 @@ def maj():
 	ts._in(("Seuil_H2O_haut",float))
 	ts._out(("Seuil_H2O_haut",nouveau_seuil_H2O))
 	#
+	#Allumer les lampes
+	ts._out(("Lampe_En_Route",))
+	#
 	message.set("detection_heure_creuse")
 	ts._out(("detection_heure_creuse",)) 
 	fenetre.after(temps,maj)

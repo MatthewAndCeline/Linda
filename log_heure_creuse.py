@@ -30,6 +30,9 @@ def maj():
 	ts._in(("Seuil_H2O_haut",float))
 	ts._out(("Seuil_H2O_haut",nouveau_seuil_H2O))
 	#
+	#Eteindre les lampes
+	ts._out(("Lampe_Arreté",))
+	#
 	message.set("detection_heure_pleine")
 	ts._out(("detection_heure_pleine",)) 
 	fenetre.after(temps,maj)
