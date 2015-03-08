@@ -98,3 +98,13 @@ process_id=`ps aux | grep ./log_heure_creuse.py | grep -v root | grep -v grep | 
 if [ $? -eq "0" ]; then
 kill -9 $process_id
 fi
+
+process_id=`ps aux | grep ./alarme.py | grep -v root | grep -v grep | awk '{print $2}'`
+if [ $? -eq "0" ]; then
+kill -9 $process_id
+fi
+
+process_id=`ps aux | grep ./personnes.py | grep -v root | grep -v grep | awk '{print $2}'`
+if [ $? -eq "0" ]; then
+kill -9 $process_id
+fi

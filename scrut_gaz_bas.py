@@ -18,7 +18,7 @@ seuil_CO = ts._rd(("Seuil_CO",float))[1]
 # On crée une fenêtre, racine de notre interface
 fenetre = Tk()
 fenetre.title("Scrutateur Gaz Bas")
-fenetre.geometry('200x100+750+200')
+fenetre.geometry('200x150+750+200')
 
 # Données affichées variant avec le temps
 str_valeur_CH4 = StringVar()

@@ -40,3 +40,7 @@ echo "Lancement du logique heure pleine !"
 ./log_heure_pleine.py&
 echo "Lancement du logique heure creuse !"
 ./log_heure_creuse.py&
+echo "Lancement de l'alarme !"
+./alarme.py&
+echo "Lancement des personnes !"
+./personnes.py&
