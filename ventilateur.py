@@ -2,10 +2,10 @@
 # -*- coding: utf-8-unix -*-
 print("OK ventaliteur ")
 
-
 from Tkinter import *
 import time
 import linda
+import threading
 
 linda.connect()
 ts = linda.universe._rd(("TupleSpace drainage", linda.TupleSpace))[1]
@@ -57,7 +57,9 @@ def maj():
 		ts._out("etat_ventilateur_force","none")
 		etatVentilateur.set(etat_ventilateur)		
 	fenetre.after(temps,maj)
-maj()
+
+T = threading.Thread(None,maj)
+T.start()
 
 # On lance la boucle d'exécution
 fenetre.mainloop()

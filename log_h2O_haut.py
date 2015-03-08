@@ -5,6 +5,7 @@ print("OK logique H2O haut ")
 from Tkinter import *
 import linda
 import time
+import threading
 
 #Initialisation de Linda
 linda.connect()
@@ -40,7 +41,9 @@ def maj():
 		ts._out(("Ordre_Ventilateur","En_Route"))
 		ts._out(("detection_gaz_bas",))
 	fenetre.after(temps,maj)
-maj()
+
+T = threading.Thread(None,maj)
+T.start()
 
 # On lance la boucle d'exécution
 fenetre.mainloop()

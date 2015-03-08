@@ -5,6 +5,7 @@ print("OK pompe ")
 from Tkinter import *
 import time
 import linda
+import threading
 
 linda.connect()
 ts = linda.universe._rd(("TupleSpace drainage", linda.TupleSpace))[1]
@@ -38,7 +39,9 @@ def maj():
 		ts._in(("etat_pompe","activé"))
 		ts._out(("etat_pompe","desactivé"))
 	fenetre.after(temps,maj)
-maj()
+
+T = threading.Thread(None,maj)
+T.start()
 
 # On lance la boucle d'exécution
 fenetre.mainloop()

@@ -5,6 +5,7 @@ print("OK logique heure pleine ")
 from Tkinter import *
 import linda
 import time
+import threading
 
 #Initialisation de Linda
 linda.connect()
@@ -47,7 +48,8 @@ def maj():
 	ts._out(("detection_heure_creuse",)) 
 	fenetre.after(temps,maj)
 	
-maj()
+T = threading.Thread(None,maj)
+T.start()
 
 # On lance la boucle d'exécution
 fenetre.mainloop()

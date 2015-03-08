@@ -5,6 +5,7 @@ print("OK logique gaz haut ")
 from Tkinter import *
 import linda
 import time
+import threading
 
 #Initialisation de Linda
 linda.connect()
@@ -28,7 +29,9 @@ def maj():
 	message.set("démarrage ventilo et detection_gaz_bas")
 	ts._out(("Ordre_Ventilateur","En_Route",))
 	fenetre.after(temps,maj)
-maj()
+
+T = threading.Thread(None,maj)
+T.start()
 
 # On lance la boucle d'exécution
 fenetre.mainloop()

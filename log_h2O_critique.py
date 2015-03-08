@@ -5,6 +5,7 @@ print("OK logique H2O Critique ")
 from Tkinter import *
 import linda
 import time
+import threading
 
 #Initialisation de Linda
 linda.connect()
@@ -25,7 +26,9 @@ Label(fenetre,textvariable=message).pack(padx=10,pady=10)
 def maj():
 	message.set("en attente niveau Critique")
 	fenetre.after(temps,maj)
-maj()
+
+T = threading.Thread(None,maj)
+T.start()
 
 # On lance la boucle d'exécution
 fenetre.mainloop()

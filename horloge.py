@@ -5,6 +5,7 @@ print("OK Horloge")
 from Tkinter import *
 import linda
 import time
+import threading
 
 #Initialisation de Linda
 linda.connect()
@@ -37,7 +38,9 @@ def maj(k,m):
 			k = 0
 		m = 0
 	fenetre.after(duree_une_heure / 6,maj,k,m)
-maj(0,0)
+
+T = threading.Thread(None,maj,None,(0,0))
+T.start()
 
 # On lance la boucle d'exécution
 fenetre.mainloop()
