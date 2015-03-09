@@ -34,6 +34,14 @@ def maj():
 	#Eteindre les lampes
 	ts._out(("Lampe_Arreté",))
 	#
+	#Faire sortir les travailleurs
+	heure = ts._rd(("heure",int))[1]
+	if ((heure >= 13) and (heure <= 15)):
+		ts._out(("Equipe_Sortir",1))
+	else:
+		ts._out(("Equipe_Entrer",2))
+	#
+	time.sleep(temps / 2000)
 	#Couper l'ascenseur
 	ts._out(("Interdire_Ascenseur",))
 	#

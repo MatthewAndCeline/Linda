@@ -56,26 +56,30 @@ def ecouterAppel():
 	etat_autorisation = ts._rd(("autorisation_ascenseur",str))[1]
 	etat_action = ts._rd(("action_ascenseur",str))[1]
 	if (etat_autorisation == "autorisé"):
-		if (etat_action == "attendEnHaut"):
+		if (etat_action == "attend"):
 			#Prendre des clients
-			nom = ts._in(("veut_descendre",str))[1]
+			tpl = ts._in(("appel_ascenseur",str,str))
+			nom = tpl[2]
+			demande = tpl[1]
+			print("appel " + nom + " " + demande)
 			#Descendre
-			etat_action = "Descent"
+			etat_action = demande
 			ts._in(("action_ascenseur",str))
 			ts._out(("action_ascenseur",etat_action))
 			action.set(etat_action)
-			etat_occupation = nom #+ " " + nom2 + " " + nom3
+			etat_occupation = nom
 			ts._in(("occupation_ascenseur",str))
 			ts._out(("occupation_ascenseur",etat_occupation))
 			occupation.set(etat_occupation)
-			time.sleep(temps / 30000.0)
+			time.sleep(temps / 30000)
 			#Vider
-			ts._out(("descendu",nom))
+			ts._out(("ascenseur_arrivé",nom))
+			print("ascenseur arrivé")
 			etat_occupation = "vide"
 			ts._in(("occupation_ascenseur",str))
 			ts._out(("occupation_ascenseur",etat_occupation))
 			occupation.set(etat_occupation)
-			etat_action = "AttendEnBas"
+			etat_action = "attend"
 			ts._in(("action_ascenseur",str))
 			ts._out(("action_ascenseur",etat_action))
 			action.set(etat_action)

@@ -37,20 +37,41 @@ def maj():
 		#Reçoit l'ordre de prendre son service
 		ts._in(("Equipe_Entrer",1))
 		#Appel Ascenseur
-		ts._out(("veut_descendre","isabelle"))
+		ts._out(("appel_ascenseur","descendre","isabelle"))
 		etat_location = "veut descendre"
 		ts._in(("Isabelle","etat_location",str))
-		ts._out(("Isabelle","etat_location","veut descendre"))
+		ts._out(("Isabelle","etat_location",etat_location))
 		location.set(etat_location)
 		#Arrivé en bas
-		ts._in(("descendu","isabelle"))
+		ts._in(("ascenseur_arrivé","isabelle"))
+		print("Isabelle entrée")
 		etat_location = "mine"
 		ts._in(("Isabelle","etat_location",str))
-		ts._out(("Isabelle","etat_location","mine"))
+		ts._out(("Isabelle","etat_location",etat_location))
 		location.set(etat_location)
 		etat_action = "Travail"
 		ts._in(("Isabelle","etat_action",str))
-		ts._out(("Isabelle","etat_action","Travail"))
+		ts._out(("Isabelle","etat_action",etat_action))
+		action.set(etat_action)
+	if (etat_action == "Travail"):
+		#Reçoit l'ordre de terminer son service
+		ts._in(("Equipe_Sortir",1))
+		#Appel Ascenseur
+		ts._out(("appel_ascenseur","monter","isabelle"))
+		etat_location = "veut monter"
+		ts._in(("Isabelle","etat_location",str))
+		ts._out(("Isabelle","etat_location",etat_location))
+		location.set(etat_location)
+		#Arrivé en haut
+		ts._in(("ascenseur_arrivé","isabelle"))
+		print("Isabelle sortie")
+		etat_location = "Dehors"
+		ts._in(("Isabelle","etat_location",str))
+		ts._out(("Isabelle","etat_location",etat_location))
+		location.set(etat_location)
+		etat_action = "Inactif"
+		ts._in(("Isabelle","etat_action",str))
+		ts._out(("Isabelle","etat_action",etat_action))
 		action.set(etat_action)
 	fenetre.after(temps,maj)
 
