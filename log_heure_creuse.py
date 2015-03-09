@@ -16,7 +16,7 @@ temps = ts._rd(("Temps_Rafraichissement",int))[1]
 
 # On crée une fenêtre, racine de notre interface
 fenetre = Tk()
-fenetre.title("Logique Heure Creuse")
+fenetre.title("Log.H.C.")
 fenetre.geometry('150x50+200+300')
 
 message = StringVar()

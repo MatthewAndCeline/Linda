@@ -27,7 +27,7 @@ occupation = StringVar()
 Label(fenetre,textvariable=occupation).pack(padx=5,pady=5)
 
 # Fonction de mise à jour à réaliser en permanence
-def maj():
+def maj(TEcouter):
 	etat_autorisation = ts._rd(("autorisation_ascenseur",str))[1]
 	autorisation.set(etat_autorisation)
 	etat_action = ts._rd(("action_ascenseur",str))[1]
@@ -40,14 +40,17 @@ def maj():
 		autorisation.set(etat_autorisation)
 		ts._in(("autorisation_ascenseur","autorisé"))
 		ts._out(("autorisation_ascenseur","interdit"))
+		TEcouter._Thread__stop()
 	else:
 		ts._in(("Autoriser_Ascenseur",))
 		etat_autorisation = "autorisé"
 		autorisation.set(etat_autorisation)
 		ts._in(("autorisation_ascenseur","interdit"))
 		ts._out(("autorisation_ascenseur","autorisé"))
-		fenetre.after(temps / 60, ecouterAppel)
-	fenetre.after(temps,maj)
+		TEcouter = threading.Thread(None,ecouterAppel)
+		TEcouter.start()
+		#fenetre.after(temps / 60, ecouterAppel)
+	fenetre.after(temps,maj,TEcouter)
 
 def ecouterAppel():
 	etat_autorisation = ts._rd(("autorisation_ascenseur",str))[1]
@@ -55,24 +58,19 @@ def ecouterAppel():
 	if (etat_autorisation == "autorisé"):
 		if (etat_action == "attendEnHaut"):
 			#Prendre des clients
-			nom1 = ts._in(("veut_descendre",str))[1]
-			time.sleep(temps / 240)
-			nom2 = ts._inp(("veut_descendre",str))[1]
-			nom3 = ts._inp(("veut_descendre",str))[1]
+			nom = ts._in(("veut_descendre",str))[1]
 			#Descendre
 			etat_action = "Descent"
 			ts._in(("action_ascenseur",str))
 			ts._out(("action_ascenseur",etat_action))
 			action.set(etat_action)
-			etat_occupation = nom1 + " " + nom2 + " " + nom3
+			etat_occupation = nom #+ " " + nom2 + " " + nom3
 			ts._in(("occupation_ascenseur",str))
 			ts._out(("occupation_ascenseur",etat_occupation))
 			occupation.set(etat_occupation)
-			time.sleep(temps / 30)
+			time.sleep(temps / 30000.0)
 			#Vider
-			ts._out(("descendu",nom1))
-			ts._out(("descendu",nom2))
-			ts._out(("descendu",nom3))
+			ts._out(("descendu",nom))
 			etat_occupation = "vide"
 			ts._in(("occupation_ascenseur",str))
 			ts._out(("occupation_ascenseur",etat_occupation))
@@ -83,7 +81,8 @@ def ecouterAppel():
 			action.set(etat_action)
 			fenetre.after(temps / 60, ecouterAppel)
 
-T = threading.Thread(None,maj)
+TEcouter = threading.Thread(None,ecouterAppel)
+T = threading.Thread(None,maj,None,(TEcouter,))
 T.start()
 
 # On lance la boucle d'exécution
