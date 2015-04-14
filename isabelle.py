@@ -43,6 +43,7 @@ def maj():
 		ts._out(("Isabelle","etat_location",etat_location))
 		location.set(etat_location)
 		#Arrivé en bas
+		print("Isabelle attend l'ascenseur")
 		ts._in(("ascenseur_arrivé","isabelle"))
 		print("Isabelle entrée")
 		etat_location = "mine"

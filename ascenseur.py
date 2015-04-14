@@ -24,22 +24,22 @@ action = StringVar()
 Label(fenetre,textvariable=action).pack(padx=5,pady=5)
 occupation = StringVar()
 Label(fenetre,textvariable=occupation).pack(padx=5,pady=5)
+position = StringVar()
+Label(fenetre,textvariable=position).pack(padx=5,pady=5)
 
 def init():
 	etat_autorisation = ts._rd(("autorisation_ascenseur",str))[1]
 	autorisation.set(etat_autorisation)
+	action.set("attend")
+	position.set("haut")
+	occupation.set("vide")
 	fenetre.after(temps,maj)
 	fenetre.after(temps / 60, ecouterAppel)
 
 # Fonction de mise à jour à réaliser en permanence
-def maj(): #TEcouter
+def maj():
 	etat_autorisation = ts._rd(("autorisation_ascenseur",str))[1]
 	autorisation.set(etat_autorisation)
-	fenetre.after(temps,maj)
-	etat_action = ts._rd(("action_ascenseur",str))[1]
-	action.set(etat_action)
-	etat_occupation = ts._rd(("occupation_ascenseur",str))[1]
-	occupation.set(etat_occupation)
 	if(etat_autorisation == "autorisé"):
 		ts._in(("Interdire_Ascenseur",))
 		print("Interdire Ascenseur")
@@ -66,7 +66,7 @@ def ecouterAppel():
 			tpl = ts._in(("appel_ascenseur",str,str))
 			nom = tpl[2]
 			demande = tpl[1]
-			print("appel " + nom + " " + demande)
+			print("ascenseur appel " + nom + " " + demande)
 			#Descendre
 			etat_action = demande
 			ts._in(("action_ascenseur",str))
@@ -90,9 +90,7 @@ def ecouterAppel():
 			action.set(etat_action)
 			fenetre.after(temps / 60, ecouterAppel)
 
-#TEcouter = threading.Thread(None,ecouterAppel)
-#T = threading.Thread(None,maj,None,(TEcouter,))
-#T.start()
+init()
 
 # On lance la boucle d'exécution
 fenetre.mainloop()
