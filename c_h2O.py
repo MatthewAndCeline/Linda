@@ -6,7 +6,6 @@ from Tkinter import *
 import linda
 import time
 import random
-import threading
 
 #Initialisation de Linda
 linda.connect()
@@ -39,8 +38,12 @@ def maj(k):
 	ts._out(("Niveau_H2O",k))
 	fenetre.after(temps,maj,k)
 
-T = threading.Thread(None,maj,None,(7.0,))
-T.start()
+def init():
+	pompe_en_route = ts._rd(("etat_pompe",str))[1]
+	fenetre.after(temps,maj,7.0)
+
+init()
+
 
 # On lance la boucle d'exécution
 fenetre.mainloop()

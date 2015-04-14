@@ -6,7 +6,6 @@ from Tkinter import *
 import linda
 import time
 import random
-import threading
 
 #Initialisation de Linda
 linda.connect()
@@ -45,8 +44,12 @@ def maj(k):
 	ts._out(("Niveau_CH4",k))
 	fenetre.after(temps,maj,k)
 
-T = threading.Thread(None,maj,None,(0.0,))
-T.start()
+def init():
+	pompe_en_route = ts._rd(("etat_pompe",str))[1]
+	ventilo_en_route = ts._rd(("etat_ventilateur",str))[1]
+	fenetre.after(temps,maj,0.0)
+
+init()
 
 # On lance la boucle d'exécution
 fenetre.mainloop()

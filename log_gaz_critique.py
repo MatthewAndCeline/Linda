@@ -5,7 +5,6 @@ print("OK logique gaz critique ")
 from Tkinter import *
 import linda
 import time
-import threading
 
 #Initialisation de Linda
 linda.connect()
@@ -27,8 +26,11 @@ def maj():
 	message.set("En attente gaz critique")
 	fenetre.after(temps,maj)
 	
-T = threading.Thread(None,maj)
-T.start()
+def init():
+	message.set("En attente gaz critique")
+	fenetre.after(temps,maj)
+
+init()
 
 # On lance la boucle d'exécution
 fenetre.mainloop()

@@ -6,7 +6,6 @@ from Tkinter import *
 import linda
 import time
 import random
-import threading
 
 #Initialisation de Linda
 linda.connect()
@@ -29,8 +28,11 @@ def maj():
 	info.set("Marguerite")
 	fenetre.after(temps,maj)
 
-T = threading.Thread(None,maj)
-T.start()
+def init():
+	info.set("Marguerite")
+	fenetre.after(temps,maj)
+
+init()
 
 # On lance la boucle d'exécution
 fenetre.mainloop()

@@ -6,7 +6,6 @@ from Tkinter import *
 import linda
 import time
 import random
-import threading
 
 #Initialisation de Linda
 linda.connect()
@@ -53,6 +52,7 @@ def maj():
 		ts._in(("Isabelle","etat_action",str))
 		ts._out(("Isabelle","etat_action",etat_action))
 		action.set(etat_action)
+		fenetre.update()
 	if (etat_action == "Travail"):
 		#Reçoit l'ordre de terminer son service
 		ts._in(("Equipe_Sortir",1))
@@ -73,10 +73,13 @@ def maj():
 		ts._in(("Isabelle","etat_action",str))
 		ts._out(("Isabelle","etat_action",etat_action))
 		action.set(etat_action)
+		fenetre.update()
 	fenetre.after(temps,maj)
 
-T = threading.Thread(None,maj)
-T.start()
+def init():
+	fenetre.after(temps,maj)
+
+init()
 
 # On lance la boucle d'exécution
 fenetre.mainloop()

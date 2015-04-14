@@ -6,7 +6,6 @@ from Tkinter import *
 import linda
 import time
 import random
-import threading
 
 #Initialisation de Linda
 linda.connect()
@@ -28,8 +27,10 @@ Label(fenetre,textvariable=info).pack(padx=5,pady=5)
 def maj():
 	fenetre.after(temps,maj)
 
-T = threading.Thread(None,maj)
-T.start()
+def init():
+	fenetre.after(temps,maj)
+
+init()
 
 # On lance la boucle d'exécution
 fenetre.mainloop()

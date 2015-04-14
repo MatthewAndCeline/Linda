@@ -5,7 +5,6 @@ print("OK scrutateur heure pleine ")
 from Tkinter import *
 import linda
 import time
-import threading
 
 #Initialisation de Linda
 linda.connect()
@@ -33,8 +32,10 @@ def maj():
 		ts._out(("Heure_pleine_detecté",))
 	fenetre.after(temps,maj)
 
-T = threading.Thread(None,maj)
-T.start()
+def init():
+	fenetre.after(temps,maj)
+
+init()
 
 # On lance la boucle d'exécution
 fenetre.mainloop()

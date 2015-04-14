@@ -46,7 +46,6 @@ ts._out(("Temps_Rafraichissement",300))
 ts._out(("Proba_Fumer",0.01))
 ts._out(("Proba_Action_Manuelle",0.01))
 
-
 # On crée une fenêtre, racine de notre interface
 fenetre = Tk()
 fenetre.title("Master")

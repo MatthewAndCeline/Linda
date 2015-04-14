@@ -5,7 +5,6 @@ print("OK logique H2O bas ")
 from Tkinter import *
 import linda
 import time
-import threading
 
 #Initialisation de Linda
 linda.connect()
@@ -37,8 +36,11 @@ def maj():
 	ts._out(("detection_H2O_haut",))
 	fenetre.after(temps,maj)
 
-T = threading.Thread(None,maj)
-T.start()
+def init():
+	message.set("en attente niveau bas")
+	fenetre.after(temps,maj)
+
+init()
 
 # On lance la boucle d'exécution
 fenetre.mainloop()

@@ -5,7 +5,6 @@ print("OK lampe ")
 from Tkinter import *
 import time
 import linda
-import threading
 
 linda.connect()
 ts = linda.universe._rd(("TupleSpace drainage", linda.TupleSpace))[1]
@@ -40,8 +39,12 @@ def maj():
 		ts._out(("etat_lampe","desactivé"))
 	fenetre.after(temps,maj)
 
-T = threading.Thread(None,maj)
-T.start()
+def init():
+	etat_lampe = ts._rd(("etat_lampe",str))[1]
+	etatLampe.set(etat_lampe)
+	fenetre.after(temps,maj)
+
+init()
 
 # On lance la boucle d'exécution
 fenetre.mainloop()
