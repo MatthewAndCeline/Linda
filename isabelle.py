@@ -38,6 +38,7 @@ def maj():
 		#Appel Ascenseur
 		ts._out(("appel_ascenseur","descendre","isabelle"))
 		etat_location = "veut descendre"
+		print("Isabelle veut descendre")
 		ts._in(("Isabelle","etat_location",str))
 		ts._out(("Isabelle","etat_location",etat_location))
 		location.set(etat_location)
@@ -77,6 +78,7 @@ def maj():
 	fenetre.after(temps,maj)
 
 def init():
+	ts._out(("Isabelle","etat_location","dehors"))
 	fenetre.after(temps,maj)
 
 init()
