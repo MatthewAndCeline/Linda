@@ -40,7 +40,13 @@ def maj():
 	heure = ts._rd(("heure",int))[1]
 	if ((heure >= 5) and (heure <= 13)):
 		ts._out(("Equipe_Entrer",1))
+		ts._out(("Equipe_Entrer",1))
+		ts._out(("Equipe_Entrer",1))
+		ts._out(("Equipe_Entrer",1))
 	else:
+		ts._out(("Equipe_Entrer",2))
+		ts._out(("Equipe_Entrer",2))
+		ts._out(("Equipe_Entrer",2))
 		ts._out(("Equipe_Entrer",2))
 	#
 	message.set("detection_heure_creuse")

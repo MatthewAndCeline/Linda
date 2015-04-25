@@ -37,7 +37,13 @@ def maj():
 	heure = ts._rd(("heure",int))[1]
 	if ((heure >= 13) and (heure <= 15)):
 		ts._out(("Equipe_Sortir",1))
+		ts._out(("Equipe_Sortir",1))
+		ts._out(("Equipe_Sortir",1))
+		ts._out(("Equipe_Sortir",1))
 	else:
+		ts._out(("Equipe_Entrer",2))
+		ts._out(("Equipe_Entrer",2))
+		ts._out(("Equipe_Entrer",2))
 		ts._out(("Equipe_Entrer",2))
 	#
 	time.sleep(temps / 2000)

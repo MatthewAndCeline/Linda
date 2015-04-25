@@ -76,7 +76,7 @@ def ecouterAppel():
 			ts._in(("occupation_ascenseur",str))
 			ts._out(("occupation_ascenseur",etat_occupation))
 			occupation.set(etat_occupation)
-			time.sleep(temps / 3000)
+			time.sleep(temps / 120)
 			#Vider
 			ts._out(("ascenseur_arrivé",nom))
 			print("ascenseur arrivé")
