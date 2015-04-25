@@ -24,22 +24,22 @@ info = StringVar()
 Label(fenetre,textvariable=info).pack(padx=5,pady=5)
 
 # Fonction de mise à jour à réaliser en permanence
-def maj(niveau_co):
+def maj(k):
 	pompe_en_route = ts._rd(("etat_pompe",str))[1]
 	ventilo_en_route = ts._rd(("etat_ventilateur",str))[1]
 	randNum = random.random()
 	randNum = round(randNum,2)
 	if (ventilo_en_route == "desactivé"):
 		if (pompe_en_route == "desactivé"):
-			niveau_co += 0.2*randNum
+			k += 0.2*randNum
 		else:
-			niveau_co += randNum
+			k += randNum
 	else:
 		if (pompe_en_route == "desactivé"):
-			niveau_co -= randNum
+			k -= randNum
 		else:
-			niveau_co -= 0.3*randNum
-	niveau_co = round(k,4)
+			k -= 0.3*randNum
+	k = round(k,4)
 	info.set(k)
 	ts._in(("Niveau_CO",float))
 	ts._out(("Niveau_CO",k))

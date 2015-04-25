@@ -24,11 +24,18 @@ info = StringVar()
 Label(fenetre,textvariable=info).pack(padx=5,pady=5)
 
 # Fonction de mise à jour à réaliser en permanence
-def maj():
-	fenetre.after(temps,maj)
+def maj(nbPersonnes):
+	action = ts._in(("Entree/Sortie",str))[1]
+	print("compteur, reçu " + action)
+	if (action == "monter"):
+		nbPersonnes = nbPersonnes - 1
+	else:
+		nbPersonnes = nbPersonnes + 1
+	info.set(nbPersonnes)
+	fenetre.after(temps,maj,nbPersonnes)
 
 def init():
-	fenetre.after(temps,maj)
+	fenetre.after(temps,maj,0)
 
 init()
 

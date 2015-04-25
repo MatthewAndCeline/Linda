@@ -37,7 +37,7 @@ ts._out(("Seuil_H2O_haut_HP",7.0))
 ts._out(("Seuil_H2O_haut_HC",9.0))
 ts._out(("Seuil_H2O_haut",9.0))
 ts._out(("Seuil_H2O_bas",3.0))
-ts._out(("Duree_une_heure",10000))
+ts._out(("Duree_une_heure",3000))
 ts._out(("Temps_Rafraichissement",300))
 
 # On crée une fenêtre, racine de notre interface
