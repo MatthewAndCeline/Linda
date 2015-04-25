@@ -64,7 +64,7 @@ def maj():
 		ts._in(("autorisation_ascenseur","interdit"))
 		ts._out(("autorisation_ascenseur","autorisé"))
 	fenetre.after(temps,maj)
-
+ 
 def ecouterAppel():
 	print("Je suis un ascenseur qui écoute")
 	if (etat_autorisation == "autorisé"):
