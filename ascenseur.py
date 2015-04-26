@@ -43,15 +43,15 @@ def maj(etat_action, etat_position):
 		if (etat_position == "haut"):
 			# si l'ascenseur est en haut et la personne en bas, il faut d'abord descendre la chercher
 			if (demande == "monter"):
-				time.sleep(temps)
+				time.sleep(duree_une_heure / 30000)
 		if (etat_position == "bas"):
 			# si l'ascenseur est en bas et la personne en haut, il faut d'abord monter la chercher
 			if (demande == "descendre"):
-				time.sleep(temps)
+				time.sleep(duree_une_heure / 30000)
 		#Emmener la personne
 		etat_action = demande
 		action.set(etat_action)
-		time.sleep(temps)
+		time.sleep(duree_une_heure / 30000)
 		#Vider l'ascenseur à l'arrivée
 		ts._out(("ascenseur_arrivé",nom))
 		print("ascenseur arrivé")
