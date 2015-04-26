@@ -17,7 +17,7 @@ temps = ts._rd(("Temps_Rafraichissement",int))[1]
 # On crée une fenêtre, racine de notre interface
 fenetre = Tk()
 fenetre.title("Capt.Pers")
-fenetre.geometry('150x50+1200+0')
+fenetre.geometry('350x50+1000+0')
 
 # Données affichées variant avec le temps
 info = StringVar()
@@ -26,7 +26,6 @@ Label(fenetre,textvariable=info).pack(padx=5,pady=5)
 # Fonction de mise à jour à réaliser en permanence
 def maj(nbPersonnes):
 	action = ts._in(("Entree/Sortie",str))[1]
-	print("compteur, reçu " + action)
 	if (action == "monter"):
 		nbPersonnes = nbPersonnes - 1
 	else:

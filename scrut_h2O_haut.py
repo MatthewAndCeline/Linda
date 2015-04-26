@@ -16,7 +16,7 @@ seuil = ts._rd(("Seuil_H2O_haut",float))[1]
 
 # On crée une fenêtre, racine de notre interface
 fenetre = Tk()
-fenetre.title("Scrutateur H2O Haut")
+fenetre.title("Sc.H2OHaut")
 fenetre.geometry('150x50+800+200')
 
 valeur = StringVar()

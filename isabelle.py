@@ -17,7 +17,7 @@ temps = ts._rd(("Temps_Rafraichissement",int))[1]
 # On crée une fenêtre, racine de notre interface
 fenetre = Tk()
 fenetre.title("Isabelle")
-fenetre.geometry('150x50+1200+500')
+fenetre.geometry('150x50+1000+100')
 
 # Données affichées variant avec le temps
 ts._out(("Isabelle","etat_location","Dehors"))
@@ -38,14 +38,11 @@ def maj():
 		#Appel Ascenseur
 		ts._out(("appel_ascenseur","descendre","Isabelle"))
 		etat_location = "veut descendre"
-		print("Isabelle veut descendre")
 		ts._in(("Isabelle","etat_location",str))
 		ts._out(("Isabelle","etat_location",etat_location))
 		location.set(etat_location)
 		#Arrivé en bas
-		print("Isabelle attend l'ascenseur")
 		ts._in(("ascenseur_arrivé","Isabelle"))
-		print("Isabelle entrée")
 		etat_location = "mine"
 		ts._in(("Isabelle","etat_location",str))
 		ts._out(("Isabelle","etat_location",etat_location))
@@ -66,7 +63,6 @@ def maj():
 		location.set(etat_location)
 		#Arrivé en haut
 		ts._in(("ascenseur_arrivé","Isabelle"))
-		print("Isabelle sortie")
 		etat_location = "Dehors"
 		ts._in(("Isabelle","etat_location",str))
 		ts._out(("Isabelle","etat_location",etat_location))

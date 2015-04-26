@@ -16,7 +16,7 @@ temps = ts._rd(("Temps_Rafraichissement",int))[1]
 # On crée une fenêtre, racine de notre interface
 fenetre = Tk()
 fenetre.title("Log.H.C.")
-fenetre.geometry('150x50+200+300')
+fenetre.geometry('350x50+0+500')
 
 message = StringVar()
 Label(fenetre,textvariable=message).pack(padx=10,pady=10)

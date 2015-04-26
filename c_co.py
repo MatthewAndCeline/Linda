@@ -17,7 +17,7 @@ temps = ts._rd(("Temps_Rafraichissement",int))[1]
 # On crée une fenêtre, racine de notre interface
 fenetre = Tk()
 fenetre.title("Capt.CO")
-fenetre.geometry('150x50+400+0')
+fenetre.geometry('150x50+400+100')
 
 # Données affichées variant avec le temps
 info = StringVar()

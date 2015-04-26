@@ -16,7 +16,7 @@ seuil = ts._rd(("Seuil_H2O_bas",float))[1]
 
 # On crée une fenêtre, racine de notre interface
 fenetre = Tk()
-fenetre.title("Scrutateur H2O Bas")
+fenetre.title("Sc.H2OBas")
 fenetre.geometry('150x50+800+100')
 
 # Données affichées variant avec le temps

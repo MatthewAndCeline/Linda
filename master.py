@@ -39,7 +39,7 @@ ts._out(("Temps_Rafraichissement",300))
 # On crée une fenêtre, racine de notre interface
 fenetre = Tk()
 fenetre.title("Master")
-fenetre.geometry('150x50+0+0')
+fenetre.geometry('150x50+200+0')
 Label(fenetre,text="Système en route").pack(padx=5,pady=5)
 
 # On lance la boucle d'exécution

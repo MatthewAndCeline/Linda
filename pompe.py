@@ -15,7 +15,7 @@ temps = ts._rd(("Temps_Rafraichissement",int))[1]
 # On crée une fenêtre, racine de notre interface
 fenetre = Tk()
 fenetre.title("Pompe")
-fenetre.geometry('150x50+0+500')
+fenetre.geometry('150x50+200+100')
 
 # Données affichées variant avec le temps
 etatPompe = StringVar()

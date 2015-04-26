@@ -16,7 +16,7 @@ temps = ts._rd(("Temps_Rafraichissement",int))[1]
 # On crée une fenêtre, racine de notre interface
 fenetre = Tk()
 fenetre.title("Logique Gaz Bas")
-fenetre.geometry('150x50+400+300')
+fenetre.geometry('350x50+400+500')
 
 message = StringVar()
 Label(fenetre,textvariable=message).pack(padx=10,pady=10)

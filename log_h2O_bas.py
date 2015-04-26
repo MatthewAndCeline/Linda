@@ -16,7 +16,7 @@ temps = ts._rd(("Temps_Rafraichissement",int))[1]
 # On crée une fenêtre, racine de notre interface
 fenetre = Tk()
 fenetre.title("Logique H2O Bas")
-fenetre.geometry('150x50+800+300')
+fenetre.geometry('500x50+800+500')
 
 # Données affichées variant avec le temps
 message = StringVar()

@@ -12,7 +12,7 @@ ts = linda.universe._rd(("TupleSpace drainage", linda.TupleSpace))[1]
 # On crée une fenêtre, racine de notre interface
 fenetre = Tk()
 fenetre.title("Ventilateur")
-fenetre.geometry('150x50+200+500')
+fenetre.geometry('150x50+200+200')
 
 #Paramétrage du système
 temps = ts._rd(("Temps_Rafraichissement",int))[1]

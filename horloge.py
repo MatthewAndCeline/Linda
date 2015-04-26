@@ -17,7 +17,7 @@ duree_une_heure = ts._rd(("Duree_une_heure",int))[1]
 # On crée une fenêtre, racine de notre interface
 fenetre = Tk()
 fenetre.title("Horloge")
-fenetre.geometry('150x50+200+0')
+fenetre.geometry('150x50+0+0')
 
 # Données affichées variant avec le temps
 info = StringVar()

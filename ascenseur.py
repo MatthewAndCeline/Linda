@@ -16,7 +16,7 @@ duree_une_heure = ts._rd(("Duree_une_heure",int))[1]
 # On crée une fenêtre, racine de notre interface
 fenetre = Tk()
 fenetre.title("Ascenseur")
-fenetre.geometry('150x50+800+500')
+fenetre.geometry('150x50+200+400')
 
 # Données affichées variant avec le temps
 action = StringVar()
@@ -38,7 +38,6 @@ def maj(etat_action, etat_position):
 		tpl = ts._in(("appel_ascenseur",str,str))
 		nom = tpl[2]
 		demande = tpl[1]
-		print("ascenseur appel " + nom + " " + demande)
 		#Eventuellement, se déplacer vers la personne
 		if (etat_position == "haut"):
 			# si l'ascenseur est en haut et la personne en bas, il faut d'abord descendre la chercher
@@ -54,7 +53,6 @@ def maj(etat_action, etat_position):
 		time.sleep(duree_une_heure / 30000)
 		#Vider l'ascenseur à l'arrivée
 		ts._out(("ascenseur_arrivé",nom))
-		print("ascenseur arrivé")
 		if (demande == "descendre"):
 			etat_position = "haut"
 		else:
