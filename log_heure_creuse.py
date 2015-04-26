@@ -46,10 +46,6 @@ def maj():
 		ts._out(("Equipe_Entrer",2))
 		ts._out(("Equipe_Entrer",2))
 	#
-	time.sleep(temps / 2000)
-	#Couper l'ascenseur
-	ts._out(("Interdire_Ascenseur",))
-	#
 	message.set("detection_heure_pleine")
 	ts._out(("detection_heure_pleine",)) 
 	fenetre.after(temps,maj)
