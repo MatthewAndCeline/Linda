@@ -41,10 +41,10 @@ def maj():
 		ts._out(("Equipe_Sortir",1))
 		ts._out(("Equipe_Sortir",1))
 	else:
-		ts._out(("Equipe_Entrer",2))
-		ts._out(("Equipe_Entrer",2))
-		ts._out(("Equipe_Entrer",2))
-		ts._out(("Equipe_Entrer",2))
+		ts._out(("Equipe_Sortir",2))
+		ts._out(("Equipe_Sortir",2))
+		ts._out(("Equipe_Sortir",2))
+		ts._out(("Equipe_Sortir",2))
 	#
 	message.set("detection_heure_pleine")
 	ts._out(("detection_heure_pleine",)) 
