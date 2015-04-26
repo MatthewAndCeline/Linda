@@ -24,7 +24,7 @@ fenetre.geometry('200x200+500+200')
 str_valeur_CH4 = StringVar()
 Label(fenetre,textvariable=str_valeur_CH4).pack(padx=10,pady=20)
 str_valeur_CO = StringVar()
-Label(fenetre,textvariable=str_valeur_CO).pack(padx=30,pady=20)
+Label(fenetre,textvariable=str_valeur_CO).pack(padx=10,pady=10)
 
 
 # Fonction de mise à jour à réaliser en permanence
