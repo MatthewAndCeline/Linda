@@ -17,7 +17,7 @@ temps = ts._rd(("Temps_Rafraichissement",int))[1]
 # On crée une fenêtre, racine de notre interface
 fenetre = Tk()
 fenetre.title("Capt. Demandes Entrées")
-fenetre.geometry('400x50+500+200')
+fenetre.geometry('400x50+400+0')
 Label(fenetre,text="C.D.E").pack(padx=5,pady=5)
 info = StringVar()
 Label(fenetre,textvariable=info).pack(padx=5,pady=5)
@@ -28,11 +28,11 @@ def maj():
 	val_nb_demandes_entrees = ts._in(("nombre_demandes_entrees",int))[1]
 	val_nb_demandes_entrees += 1
 	ts._out(("nombre_demandes_entrees",val_nb_demandes_entrees))
-	info.set("Nombres de demandes en entrée actives : " + str(val_nb_demandes_entrees))
+#	info.set("Nombres de demandes en entrée actives : " + str(val_nb_demandes_entrees))
 	fenetre.after(temps,maj)
 
 def init():
-	info.set("entrées")
+#	info.set("entrées")
 	fenetre.after(temps,maj)
 
 init()
