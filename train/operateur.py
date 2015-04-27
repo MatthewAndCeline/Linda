@@ -11,7 +11,7 @@ ts = linda.TupleSpace()
 linda.universe._out(("TupleSpace train", ts))
 
 #Paramétrage du système
-temps = 500
+temps = 2000
 ts._out(("Temps_Rafraichissement",temps))
 ts._out(("nombre_demandes_sorties",0))
 ts._out(("nombre_demandes_entrees",0))
@@ -27,7 +27,6 @@ Label(fenetre,textvariable=nbPlacesVar).pack(padx=5,pady=5)
 
 # Fonction de mise à jour à réaliser en permanence
 def maj(nbPlacesLibres):
-#	print("maj opérateur")
 	nb_demandes_sorties = ts._rd(("nombre_demandes_sorties",int))[1]
 	nb_demandes_entrees = ts._rd(("nombre_demandes_entrees",int))[1]
 	print("opérateur : nb_demandes sorties = " + str(nb_demandes_sorties) + " nb_demandes_entrees = " + str(nb_demandes_entrees))
@@ -38,27 +37,27 @@ def maj(nbPlacesLibres):
 		ts._in(("je_suis_sorti",))
 		ts._out(("sortie_acquittement",))
 		nbPlacesLibres = nbPlacesLibres + 1
-	if (nb_demandes_entrees > 0 and nbPlacesLibres > 0):
+	elif (nb_demandes_entrees > 0 and nbPlacesLibres > 0):
 		print("opérateur : j'accorde une entrée")
 		ts._out(("accord_entree",))
 		info.set("entrée ok")
 		ts._in(("je_suis_entre",))
 		ts._out(("entree_acquittement",))
 		nbPlacesLibres = nbPlacesLibres - 1
-	if (nb_demandes_sorties > 0 and nbPlacesLibres == 0):
-		print("opérateur :j'accorde une entrée")
+	elif (nb_demandes_sorties > 0 and nbPlacesLibres == 0):
+		print("opérateur :j'accorde une sortie")
 		ts._out(("accord_sortie",))
 		info.set("sortie ok")
 		ts._in(("je_suis_sorti",))
 		ts._out(("sortie_acquittement",))
 		nbPlacesLibres = nbPlacesLibres + 1
 	nbPlacesVar.set(nbPlacesLibres)
-	fenetre.after(3*temps,maj,nbPlacesLibres)
+	fenetre.after(2*temps,maj,nbPlacesLibres)
 
 def init():
 	info.set("Opérateur")
 	nbPlacesVar.set(3)
-	fenetre.after(3*temps,maj,3)
+	fenetre.after(2*temps,maj,3)
 
 init()
 
