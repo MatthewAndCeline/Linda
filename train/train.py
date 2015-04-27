@@ -42,8 +42,6 @@ def maj(position):
 	fenetre.after(temps,maj,position)
 
 def init():
-	randNum = random.randint(1,5)
-	time.sleep(randNum)
 	fenetre.after(temps,maj,"dehors")
 
 init()
