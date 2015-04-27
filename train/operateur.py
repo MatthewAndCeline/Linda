@@ -34,16 +34,19 @@ def maj(nbPlacesLibres):
 		ts._out(("accord_sortie",))
 		info.set("sortie ok")
 		ts._in(("je_suis_sorti",))
+		ts._out(("sortie_acquittement",))
 		nbPlacesLibres = nbPlacesLibres + 1
 	if (nb_demandes_entrees > 0 and nbPlacesLibres > 0):
 		ts._out(("accord_entree",))
 		info.set("entrée ok")
 		ts._in(("je_suis_entre",))
+		ts._out(("entree_acquittement",))
 		nbPlacesLibres = nbPlacesLibres - 1
 	if (nb_demandes_sorties > 0 and nbPlacesLibres == 0):
 		ts._out(("accord_sortie",))
 		info.set("sortie ok")
 		ts._in(("je_suis_sorti",))
+		ts._out(("sortie_acquittement",))
 		nbPlacesLibres = nbPlacesLibres + 1
 	nbPlacesVar.set(nbPlacesLibres)
 	fenetre.after(3*temps,maj,nbPlacesLibres)
