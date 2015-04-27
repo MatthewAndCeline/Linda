@@ -27,8 +27,8 @@ Label(fenetre,textvariable=info).pack(padx=5,pady=5)
 
 # Fonction de mise à jour à réaliser en permanence
 def maj(position):
+	print("maj train")
 	randNum = random.randint(1,5)
-
 	if (position == "dehors"):
 		ts._out(("demande_entree",))
 		info.set("Veut entrer")
