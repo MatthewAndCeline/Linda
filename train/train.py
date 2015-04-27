@@ -31,17 +31,22 @@ def maj(position):
 
 	if (position == "dehors"):
 		ts._out(("demande_entree",))
+		info.set("Veut entrer")
 		ts._in(("accord_entree",))
+		info.set("dedans")
 		position = "dedans"
 		ts._out(("je_suis_entre",))
 	else:
 		ts._out(("demande_sortie",))
+		info.set("Veut sortir")
 		ts._in(("accord_sortie",))
+		info.set("dehors")
 		position = "dehors"
 		ts._out(("je_suis_sorti",))
 	fenetre.after(temps,maj,position)
 
 def init():
+	info.set("dehors")
 	fenetre.after(temps,maj,"dehors")
 
 init()
