@@ -29,12 +29,12 @@ Label(fenetre,textvariable=info).pack(padx=5,pady=5)
 def maj(position):
 	randNum = random.randint(1,5)
 
-	if (position == "dehors")
+	if (position == "dehors"):
 		ts._out(("demande_entree",))
 		ts._in(("accord_entree",))
 		position = "dedans"
 		ts._out(("je_suis_entre",))
-	else 
+	else:
 		ts._out(("demande_sortie",))
 		ts._in(("accord_sortie",))
 		position = "dehors"
