@@ -24,6 +24,10 @@ Label(fenetre,textvariable=info).pack(padx=5,pady=5)
 
 # Fonction de mise à jour à réaliser en permanence
 def maj():
+	ts._in(("demande_entrees"))
+	val_nb_demandes_entrees = ts._in(("nombre_demandes_entrees",int))[1]
+	val_nb_demandes_entrees += 1
+	ts._out(("nombre_demandes_entrees",val_nb_demandes_entrees))
 	fenetre.after(temps,maj)
 
 def init():
