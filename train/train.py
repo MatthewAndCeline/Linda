@@ -10,7 +10,7 @@ import sys
 
 #Initialisation de Linda
 linda.connect()
-ts = linda.universe._rd(("TupleSpace drainage", linda.TupleSpace))[1]
+ts = linda.universe._rd(("TupleSpace train", linda.TupleSpace))[1]
 
 #Paramétrage du système
 temps = ts._rd(("Temps_Rafraichissement",int))[1]
