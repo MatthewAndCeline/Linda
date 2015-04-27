@@ -28,7 +28,16 @@ Label(fenetre,textvariable=info).pack(padx=5,pady=5)
 # Fonction de mise à jour à réaliser en permanence
 def maj(position):
 	randNum = random.randint(1,5)
-	
+	if (position == "dehors")
+		ts._out("demande_entree")
+		ts._in("accord_entree")
+		position = "dedans"
+		ts._out("je_suis_entre")
+	else 
+		ts._out("demande_sortie")
+		ts._in("accord_sortie")
+		position = "dehors"
+		ts._out("je_suis_sorti")
 	fenetre.after(temps,maj,position)
 
 def init():

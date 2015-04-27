@@ -14,7 +14,7 @@ linda.universe._out(("TupleSpace train", ts))
 temps = 500
 ts._out(("Temps_Rafraichissement",temps))
 ts._out(("nombre_demandes_sorties",0))
-ts._out(("nombre_demandes_sorties",0))
+ts._out(("nombre_demandes_entrees",0))
 
 # On crée une fenêtre, racine de notre interface
 fenetre = Tk()
