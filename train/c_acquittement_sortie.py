@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8-unix -*-
-print("OK Capteur Demandes Entrées ")
+print("OK Capteur Demandes Sorties ")
 
 from Tkinter import *
 import time
@@ -16,23 +16,23 @@ temps = ts._rd(("Temps_Rafraichissement",int))[1]
 
 # On crée une fenêtre, racine de notre interface
 fenetre = Tk()
-fenetre.title("Capt. Demandes Entrées")
-fenetre.geometry('400x50+500+200')
-Label(fenetre,text="C.D.E").pack(padx=5,pady=5)
+fenetre.title("Capt. Acquittement Sorties")
+fenetre.geometry('400x50+500+300')
+Label(fenetre,text="C.D.S").pack(padx=5,pady=5)
 info = StringVar()
 Label(fenetre,textvariable=info).pack(padx=5,pady=5)
 
 # Fonction de mise à jour à réaliser en permanence
 def maj():
-	ts._in(("demande_entree",))
-	val_nb_demandes_entrees = ts._in(("nombre_demandes_entrees",int))[1]
-	val_nb_demandes_entrees += 1
-	ts._out(("nombre_demandes_entrees",val_nb_demandes_entrees))
-	info.set("Nombres de demandes en entrée actives : " + str(val_nb_demandes_entrees))
+	ts._in(("sortie_acquittement",))
+	val_nb_demandes_sorties = ts._in(("nombre_demandes_sorties",int))[1]
+	val_nb_demandes_sorties -= 1
+	ts._out(("nombre_demandes_sorties",val_nb_demandes_sorties))
+	info.set("Nombres de demandes en sortie actives : " + str(val_nb_demandes_sorties))
 	fenetre.after(temps,maj)
 
 def init():
-	info.set("entrées")
+	info.set("sorties")
 	fenetre.after(temps,maj)
 
 init()
