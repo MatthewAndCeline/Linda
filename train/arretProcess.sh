@@ -19,7 +19,7 @@ if [ $? -eq "0" ]; then
 kill -9 $process_id
 fi
 
-process_id=`ps aux | grep ./c_acquittement_sorties.py | grep -v root | grep -v grep | awk '{print $2}'`
+process_id=`ps aux | grep ./c_acquittement_sortie.py | grep -v root | grep -v grep | awk '{print $2}'`
 if [ $? -eq "0" ]; then
 kill -9 $process_id
 fi
