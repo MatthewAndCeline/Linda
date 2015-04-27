@@ -26,6 +26,14 @@ Label(fenetre,textvariable=info).pack(padx=5,pady=5)
 
 # Fonction de mise à jour à réaliser en permanence
 def maj(nbPlacesLibres):
+	nb_demandes_sorties = ts._rd(("nombre_demandes_sorties",int))[1]
+	nb_demandes_entrees = ts._rd(("nombre_demandes_entrees",int))[1]
+	if (nb_demandes_sorties > 0 and nb_demandes_entrees == 0):
+		ts._out(("accord_sortie",))
+	if (nb_demandes_entrees > 0 and nbPlacesLibres > 0):
+		ts._out(("accord_entree",))
+	if (nb_demandes_sorties > 0 and nbPlacesLibres == 0):
+		ts._out(("accord_sortie",))
 	fenetre.after(temps,maj,nbPlacesLibres)
 
 def init():
