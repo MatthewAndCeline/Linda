@@ -17,7 +17,7 @@ temps = ts._rd(("Temps_Rafraichissement",int))[1]
 # On crée une fenêtre, racine de notre interface
 fenetre = Tk()
 fenetre.title("Capt. Acquittement Entrées")
-fenetre.geometry('400x50+500+200')
+fenetre.geometry('400x50+500+600')
 Label(fenetre,text="C.D.E").pack(padx=5,pady=5)
 info = StringVar()
 Label(fenetre,textvariable=info).pack(padx=5,pady=5)

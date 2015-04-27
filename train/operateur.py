@@ -27,7 +27,7 @@ Label(fenetre,textvariable=nbPlacesVar).pack(padx=5,pady=5)
 
 # Fonction de mise à jour à réaliser en permanence
 def maj(nbPlacesLibres):
-	print("maj opérateur")
+#	print("maj opérateur")
 	nb_demandes_sorties = ts._rd(("nombre_demandes_sorties",int))[1]
 	nb_demandes_entrees = ts._rd(("nombre_demandes_entrees",int))[1]
 	print("opérateur : nb_demandes sorties = " + str(nb_demandes_sorties) + " nb_demandes_entrees = " + str(nb_demandes_entrees))
