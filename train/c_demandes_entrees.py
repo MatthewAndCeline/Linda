@@ -26,7 +26,9 @@ Label(fenetre,textvariable=info).pack(padx=5,pady=5)
 def maj():
 	ts._in(("demande_entree",))
 	val_nb_demandes_entrees = ts._in(("nombre_demandes_entrees",int))[1]
+	print("capteur demandes entrées : " + str(val_nb_demandes_entrees))
 	val_nb_demandes_entrees += 1
+	print("capteur demandes entrées : " + str(val_nb_demandes_entrees))
 	ts._out(("nombre_demandes_entrees",val_nb_demandes_entrees))
 	info.set("Nombres de demandes en entrée actives : " + str(val_nb_demandes_entrees))
 	fenetre.after(temps,maj)

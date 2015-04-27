@@ -30,19 +30,23 @@ def maj(nbPlacesLibres):
 	print("maj opérateur")
 	nb_demandes_sorties = ts._rd(("nombre_demandes_sorties",int))[1]
 	nb_demandes_entrees = ts._rd(("nombre_demandes_entrees",int))[1]
+	print("opérateur : nb_demandes sorties = " + str(nb_demandes_sorties) + " nb_demandes_entrees = " + str(nb_demandes_entrees))
 	if (nb_demandes_sorties > 0 and nb_demandes_entrees == 0):
+		print("opérateur : j'accorde une sortie")
 		ts._out(("accord_sortie",))
 		info.set("sortie ok")
 		ts._in(("je_suis_sorti",))
 		ts._out(("sortie_acquittement",))
 		nbPlacesLibres = nbPlacesLibres + 1
 	if (nb_demandes_entrees > 0 and nbPlacesLibres > 0):
+		print("opérateur : j'accorde une entrée")
 		ts._out(("accord_entree",))
 		info.set("entrée ok")
 		ts._in(("je_suis_entre",))
 		ts._out(("entree_acquittement",))
 		nbPlacesLibres = nbPlacesLibres - 1
 	if (nb_demandes_sorties > 0 and nbPlacesLibres == 0):
+		print("opérateur :j'accorde une entrée")
 		ts._out(("accord_sortie",))
 		info.set("sortie ok")
 		ts._in(("je_suis_sorti",))
