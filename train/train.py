@@ -26,13 +26,15 @@ info = StringVar()
 Label(fenetre,textvariable=info).pack(padx=5,pady=5)
 
 # Fonction de mise à jour à réaliser en permanence
-def maj():
-	fenetre.after(temps,maj)
+def maj(position):
+	randNum = random.randint(1,5)
+	
+	fenetre.after(temps,maj,position)
 
 def init():
-	randNum = random.random()
+	randNum = random.randint(1,5)
 	sleep(randNum)
-	fenetre.after(temps,maj)
+	fenetre.after(temps,maj,"dehors")
 
 init()
 
