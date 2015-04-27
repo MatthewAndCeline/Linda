@@ -19,10 +19,11 @@ ts._out(("nombre_demandes_entrees",0))
 # On crée une fenêtre, racine de notre interface
 fenetre = Tk()
 fenetre.title("Opérateur")
-fenetre.geometry('150x50+0+0')
-Label(fenetre,text="Opérateur").pack(padx=5,pady=5)
+fenetre.geometry('150x100+0+0')
 info = StringVar()
-Label(fenetre,textvariable=info).pack(padx=5,pady=5)
+Label(fenetre,text=info).pack(padx=5,pady=5)
+nbPlacesVar = StringVar()
+Label(fenetre,textvariable=nbPlacesVar).pack(padx=5,pady=5)
 
 # Fonction de mise à jour à réaliser en permanence
 def maj(nbPlacesLibres):
@@ -30,21 +31,26 @@ def maj(nbPlacesLibres):
 	nb_demandes_entrees = ts._rd(("nombre_demandes_entrees",int))[1]
 	if (nb_demandes_sorties > 0 and nb_demandes_entrees == 0):
 		ts._out(("accord_sortie",))
+		info.set("sortie ok")
 		ts._in(("je_suis_sorti",))
 		nbPlacesLibres = nbPlacesLibres + 1
 	if (nb_demandes_entrees > 0 and nbPlacesLibres > 0):
 		ts._out(("accord_entree",))
+		info.set("entrée ok")
 		ts._in(("je_suis_entre",))
 		nbPlacesLibres = nbPlacesLibres - 1
 	if (nb_demandes_sorties > 0 and nbPlacesLibres == 0):
 		ts._out(("accord_sortie",))
+		info.set("sortie ok")
 		ts._in(("je_suis_sorti",))
 		nbPlacesLibres = nbPlacesLibres + 1
-	fenetre.after(temps,maj,nbPlacesLibres)
+	nbPlacesVar.set(nbPlacesLibres)
+	fenetre.after(3*temps,maj,nbPlacesLibres)
 
 def init():
-	info.set("3 places")
-	fenetre.after(temps,maj,3)
+	info.set("Opérateur")
+	nbPlacesVar.set(3)
+	fenetre.after(3*temps,maj,3)
 
 init()
 
